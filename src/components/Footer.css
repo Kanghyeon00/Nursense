@@ -1,0 +1,58 @@
+.footerWrapper {
+    width: 70vw;
+    margin: auto;
+    margin-top: 5%;
+    font-size: 0.9rem;
+}
+
+.footerLogoWrapper {
+    display: flex;
+    align-items: center;
+}
+
+.footerDmLogo {
+    width: 15%;
+    margin-right: 21%;
+}
+
+.footerDmLogo:hover {
+    cursor: pointer;
+}
+
+.sns {
+    margin-right: 2%;
+}
+
+.sns:hover {
+    cursor: pointer;
+}
+
+.companyInfo {
+    margin-top: 2%;
+}
+
+.companyInfo span:nth-child(1),.companyInfo  span:nth-child(3),.companyInfo  span:nth-child(4),.companyInfo  span:nth-child(5) {
+    border-right: 2px solid #E6E6E6;
+    padding-right: 1.5%;
+}
+
+.companyInfo span:nth-child(2),.companyInfo  span:nth-child(5),.companyInfo  span:nth-child(6) {
+    margin-left: 1.5%;
+}
+
+.footerCopy span {
+    font-weight: bold;
+}
+
+.footerCopy span:hover {
+    cursor: pointer;
+}
+
+.footerCopy span:nth-child(2) {
+    padding-right: 1.5%;
+    border-right: 2px solid #E6E6E6;
+}
+
+.footerCopy span:nth-child(3) {
+    margin-left: 1.5%;
+}

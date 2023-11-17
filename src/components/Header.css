@@ -1,0 +1,44 @@
+.headerWrapper {
+    display: flex;
+    justify-content: center;
+    justify-content: space-around;
+    align-items: center;
+    border: 3px solid #E6E6E6;
+    width: 70vw;
+    height: 6vh;
+    border-radius: 25px;
+    margin: auto;
+}
+
+.headerMenu {
+    display: flex;
+    font-family: 'Pretendard';
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.headerLogo:hover {
+    cursor: pointer;
+}
+
+.headerMenu span {
+    margin-left: 3rem;
+    margin-right: 3rem;
+}
+
+.headerMenu span:hover {
+    cursor: pointer;
+}
+
+.headerLine {
+    border-right: 2px solid #E6E6E6;
+}
+
+.loginWrapper {
+    font-size: 1.1rem;
+    font-family: 'Pretendard';
+}
+
+.loginWrapper span:hover {
+    cursor: pointer;
+}

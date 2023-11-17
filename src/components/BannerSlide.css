@@ -1,0 +1,22 @@
+.slick-slide img {
+    width: 100vw;
+    height: 45vh;
+    object-fit: cover; /* 이미지를 확대 또는 축소하여 요소에 맞춥니다. */
+  }
+  
+  .slick-dots li button::before {
+    font-size: 12px; /* 도트 아이콘 크기 조절 */
+    color: #E6E6E6; /* 도트 아이콘 색상 설정 */
+  }
+  
+  .slick-dots li.slick-active button::before {
+    color: #000; /* 활성화된 도트 아이콘 색상 설정 */
+  }
+  
+  .slideWrapper {
+    margin-top: 2%;
+  }
+
+  .slideWrapper:hover {
+    cursor: pointer;
+  }

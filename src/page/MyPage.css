@@ -1,0 +1,41 @@
+.myPageInfoWrapper {
+    width: 70vw;
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+}
+
+.myPageInfo p {
+    font-size: 2.4rem;
+    font-weight: bold;
+    color: #078675;
+}
+
+.myPageName span:nth-child(1) {
+    color: #078675;
+    font-weight: bold;
+    font-size: 1.8rem;
+}
+
+.myPageName span {
+    font-size: 1.8rem;
+}
+
+.myPageInfo span:nth-child(3), .myPageInfo span:nth-child(4) {
+    font-size: 1.8rem;
+}
+
+.myPageSchool {
+    margin-top: 10%;
+}
+
+.myPageSchool p {
+    color: #078675;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.myPageSchool p span {
+    color: #000;
+    font-weight: 500;
+}
