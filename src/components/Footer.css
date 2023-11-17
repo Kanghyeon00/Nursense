@@ -49,8 +49,8 @@
 }
 
 .footerCopy span:nth-child(2) {
-    padding-right: 1.5%;
     border-right: 2px solid #E6E6E6;
+    padding-right: 1.5%;
 }
 
 .footerCopy span:nth-child(3) {
