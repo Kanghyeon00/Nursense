@@ -31,9 +31,9 @@ const MyPage = () => {
             <div className="myPageButtonWrapper">
               <button>나의 정보 수정</button>
             </div>
+            </div>
           </div>
         </div>
-      </div>
     </>
   );
 };

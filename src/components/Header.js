@@ -1,6 +1,13 @@
+import { useNavigate } from "react-router-dom";
 import "./Header.css";
 
 const Header = () => {
+
+  const navigate = useNavigate();
+
+  const goToHome = () => {
+    navigate('/')
+  }
 
   return (
     <>
@@ -11,6 +18,7 @@ const Header = () => {
               src={`${process.env.PUBLIC_URL}/img/nsLogo.png`}
               className="headerLogo"
               alt="headerLogo"
+              onClick={goToHome}
             />
           </div>
           <div className="headerMenu">

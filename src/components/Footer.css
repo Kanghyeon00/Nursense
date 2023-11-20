@@ -40,10 +40,6 @@
     margin-left: 1.5%;
 }
 
-.footerCopy span {
-    font-weight: bold;
-}
-
 .footerCopy span:hover {
     cursor: pointer;
 }
@@ -51,8 +47,10 @@
 .footerCopy span:nth-child(2) {
     border-right: 2px solid #E6E6E6;
     padding-right: 1.5%;
+    font-weight: bold;
 }
 
 .footerCopy span:nth-child(3) {
     margin-left: 1.5%;
+    font-weight: bold;
 }
