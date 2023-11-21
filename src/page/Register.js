@@ -35,6 +35,7 @@ const Register = () => {
   const [showTermsModal, setShowTermsModal] = useState(false);
   const [showSuccessModal, setShowSuccessModal] = useState(false);
   const [isTermsChecked, setIsTermsChecked] = useState(false);
+  const [isCheckingId, setIsCheckingId] = useState(false);
 
   const openTermsModal = () => {
     setShowTermsModal(true);
@@ -52,58 +53,60 @@ const Register = () => {
     setShowSuccessModal(false);
   };
 
+  const validateId = async (idToCheck) => {
+    try {
+      const response = await axios.post(
+        "https://www.neusenseback.com/checkid",
+        { id: idToCheck }
+      );
+
+      if (response.status === 200) {
+        console.log("아이디 사용 가능!");
+        setIdDuplicateError(false);
+      } else {
+        console.error("아이디 중복.");
+        setIdDuplicateError(true);
+      }
+    } catch (error) {
+      console.error("아이디 중복 확인 중 오류 발생:", error);
+      setIdDuplicateError(true);
+    } finally {
+      setIsCheckingId(false);
+    }
+  };
+
   const handleChange = async (e) => {
     const { name, value } = e.target;
-
-    if (name === "id") {
+  
+     // 공통적으로 수행되는 검사 로직
+     if (name === "id") {
       // 아이디는 영문과 숫자로만 이루어지고, 6글자 이상이어야 함
       const isValidId = /^[A-Za-z0-9]{6,}$/.test(value);
       setIdError(!isValidId);
 
-      // 아이디 중복 확인
-      try {
-        const response = await axios.post(
-          "https://www.neusenseback.com/checkid",
-          { id: value }
-        );
-
-        if (response.status === 200) {
-          console.log("아이디 사용 가능!");
-          setIdDuplicateError(false);
-        } else {
-          console.error("아이디 중복.");
-          setIdDuplicateError(true);
-        }
-      } catch (error) {
-        console.error("아이디 중복 확인 중 오류 발생:", error);
-        setIdDuplicateError(true);
+      // 중복 검사 중이 아니라면 중복 검사 시작
+      if (!isCheckingId) {
+        setIsCheckingId(true);
+        validateId(value);
       }
     }
 
+    // 학번, 비밀번호, 학교, 학과(학부) 등의 검사 로직
     if (name === "student_id") {
-      // 학번은 숫자만 입력되어야 함
       const isValidStudentId = /^\d+$/.test(value);
       setStudentIdError(!isValidStudentId);
-    }
-
-    if (name === "password" || name === "passwordCheck") {
-      // 비밀번호와 비밀번호 재입력이 같은지 검사
+    } else if (name === "password" || name === "passwordCheck") {
       setPasswordError(false);
       setPasswordMatchError(formData.password !== value);
-    }
-
-    if (name === "school") {
-      // 학교에 '대학교'라는 단어가 들어가지 않으면 오류
+    } else if (name === "school") {
       const isUniversityIncluded = /대학교/.test(value);
       setSchoolError(!isUniversityIncluded);
-    }
-
-    if (name === "department") {
-      // 학과(학부)에 '학과' 또는 '학부'라는 단어가 들어가지 않으면 오류
+    } else if (name === "department") {
       const isDepartmentIncluded = /학과|학부/.test(value);
       setDepartmentError(!isDepartmentIncluded);
     }
 
+    // 나머지 코드는 그대로 유지
     setFormData((prevData) => ({
       ...prevData,
       [name]: value,
@@ -115,6 +118,34 @@ const Register = () => {
 
     if (!isTermsChecked) {
       openTermsModal();
+      return;
+    }
+
+    if (
+      !formData.id ||
+      !formData.name ||
+      !formData.student_id ||
+      !formData.password ||
+      !formData.passwordCheck ||
+      !formData.email ||
+      !formData.school ||
+      !formData.department
+    ) {
+      alert("회원가입을 위해 모든 값을 입력해주세요.");
+      return;
+    }
+
+    if (
+      idError ||
+      studentIdError ||
+      passwordError ||
+      passwordMatchError ||
+      idDuplicateError ||
+      schoolError ||
+      departmentError
+    ) {
+      // 양식에 오류가 있을 경우 경고창 띄우기
+      alert("입력 양식을 확인해주세요.");
       return;
     }
 
@@ -138,7 +169,7 @@ const Register = () => {
         setRegistrationMessage("이미 가입된 아이디입니다.");
       }
     }
-  };
+  }
 
   return (
     <>
@@ -161,8 +192,7 @@ const Register = () => {
                   onChange={handleChange}
                   placeholder="아이디 입력"
                   style={{
-                    borderColor: idError ? "#E94439" : "",
-                    borderColor: idDuplicateError ? "#E94439" : "",
+                    borderColor: idError || idDuplicateError ? "#E94439" : "",
                   }}
                 />
                 {idError && (
@@ -271,7 +301,12 @@ const Register = () => {
               </label>
               <div className="termsWrapper">
                 <div>
-                  <input className="termsBox" type="checkbox" name="terms" />
+                  <input
+                    className="termsBox"
+                    type="checkbox"
+                    name="terms"
+                    onChange={() => setIsTermsChecked(!isTermsChecked)}
+                  />
                 </div>
                 <div>
                   <span>서비스 이용약관</span>
@@ -287,8 +322,16 @@ const Register = () => {
                 가입하기
               </button>
             </form>
-            {showTermsModal && <TermsModal message={'서비스 이용약관 및 개인정보 취급방침을'} message2={'확인 후, 동의해주세요.'} closeTermsModal={closeTermsModal} />}
-            {showSuccessModal && <SuccessModal closeModal={closeSuccessModal} />}
+            {showTermsModal && (
+              <TermsModal
+                message={"서비스 이용약관 및 개인정보 취급방침을"}
+                message2={"확인 후, 동의해주세요."}
+                closeTermsModal={closeTermsModal}
+              />
+            )}
+            {showSuccessModal && (
+              <SuccessModal closeModal={closeSuccessModal} />
+            )}
           </div>
         </div>
         <Footer />

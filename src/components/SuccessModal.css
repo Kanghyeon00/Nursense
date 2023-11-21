@@ -1,0 +1,24 @@
+.successModalText {
+    margin-top: 5%;
+    color: #000;
+}
+
+.backToMainButton {
+    width: 30%;
+    height: 4vh;
+    background-color: #078675;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-family: "pretendard";
+    font-size: 1.1rem;
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    transition: 0.2s;
+    margin-top: 5%;
+  }
+  
+  .backToMainButton:hover {
+    background-color: #067264; /* 확인 버튼 hover 시 배경색 변경 */
+  }

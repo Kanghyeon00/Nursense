@@ -1,9 +1,16 @@
 // SuccessModal.js
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import './SuccessModal.css';
 
 const SuccessModal = ({ closeModal }) => {
+
+  const navigate = useNavigate();
+
+  const goToHome = () => {
+    navigate('/');
+  }
+
   return (
     <div className="modal">
       <div className="modal-content">
@@ -17,10 +24,11 @@ const SuccessModal = ({ closeModal }) => {
           </div>
           <div className="successModalText">
             <span>회원가입이 완료되었습니다.</span>
-            <Link to="/" className="backToMainButton">
-              확인
-            </Link>
+
           </div>
+          <button onClick={goToHome} className="backToMainButton">
+              확인
+            </button>
         </div>
       </div>
     </div>
