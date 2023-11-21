@@ -1,117 +1,106 @@
 .registerWrapper {
-    margin-top: 6%;
-    display: flex;
-    justify-content: center;
+  margin-top: 6%;
+  display: flex;
+  justify-content: center;
 }
 
 .registrationForm {
-    color: #078675;
-    width: 30%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  color: #078675;
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.registrationForm p {
-    margin-top: 6%;
-}
+/* .registrationForm p {
+ 
+} */
 
 .registrationForm form input {
-    display: block;
-    border: 1px solid #078675;
-    width: 100%;
-    height: 3rem;
-    border-radius: 8px;
-    outline: none;
-    padding-left: 20px;
-    font-size: 1.1rem;
+  display: block;
+  border: 1px solid #078675;
+  width: 100%;
+  height: 3rem;
+  border-radius: 8px;
+  outline: none;
+  padding-left: 20px;
+  font-size: 1.1rem;
 }
 
-.registrationForm form label {
-    display: block;
-    justify-content: left;
-    width: 30vw;
-    font-weight: bold;
-    margin-bottom: 3%;
+.registrationForm label {
+  display: block;
+  justify-content: left;
+  width: 35vw;
+  font-weight: bold;
+  margin-bottom: 3%;
 }
 
-.registrationForm form input::placeholder { 
-    color: #CECECE;
-    font-family: 'Pretendard';
+.registrationForm form input::placeholder {
+  color: #cecece;
+  font-family: "Pretendard";
 }
 
 .termsWrapper {
-    display: flex;
-    align-items: center;
-    margin-top: 10%;
+  display: flex;
+  align-items: center;
+  margin-top: 10%;
 }
 
 .registrationForm .termsBox {
-    margin-left: 0;
-    cursor: pointer;
-    align-items: center;
-    width: 20px;
+  margin-left: 0;
+  cursor: pointer;
+  align-items: center;
 }
 
 .termsWrapper input[type="checkbox"] {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    border: 1px solid #078675;
-    width: 25px;
-    height: 25px;
-    border-radius: 50%;
-    outline: none;
-    cursor: pointer;
-    position: relative;
-    margin-right: 10px;
-  }
-  
-  .termsWrapper input[type="checkbox"]:checked {
-    background-color: #fff;
-    border-color: #078675;
-    color: #078675;
-  }
-  
-  .termsWrapper input[type="checkbox"]:before {
-    content: "";
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 60%;
-    height: 60%;
-    border-radius: 50%;
-    background-color: transparent;
-    transition: background-color 0.3s, border-color 0.3s;
-  }
-  
-  .termsWrapper input[type="checkbox"]:checked:before {
-    background-color: #fff;
-    border-color: #078675;
-  }
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: 5px solid #fff;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  outline: 1px solid #078675;
+  cursor: pointer;
+  position: relative;
+  margin-right: 10px;
+}
+
+.termsWrapper input[type="checkbox"]:checked {
+  background-color: #078675;
+}
 
 .termsWrapper span {
-    font-weight: bold;
+  font-weight: bold;
 }
 
-.termsWrapper span:nth-child(2), span:nth-child(4), span:nth-child(6), span:nth-child(8) {
-    color: #000;
-    font-weight: 400;
+.termsWrapper span:nth-child(2),
+span:nth-child(4),
+span:nth-child(6),
+span:nth-child(8) {
+  color: #000;
+  font-weight: 400;
 }
 
-.registrationForm button {
-    width: 105%;
-    height: 5vh;
-    background-color: #078675;
-    color: #fff;
-    border: none;
-    border-radius: 8px;
-    font-family: 'pretendard';
-    font-size: 1.1rem;
-    margin-top: 3%;
+.registrationForm .regiSubmitButton {
+  width: 105%;
+  height: 5vh;
+  background-color: #078675;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-family: "pretendard";
+  font-size: 1.1rem;
+  margin-top: 3%;
 }
 
 .registrationForm button:hover {
-    cursor: pointer;
+  cursor: pointer;
+}
+
+.formError {
+    color: #E94439;
+    font-weight: 400;
+    margin-top: 10px;
+    font-size: 0.9rem;
 }
