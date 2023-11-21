@@ -1,0 +1,75 @@
+.loginWrapper {
+    text-align: center;
+    margin-top: 7%;
+}
+
+.loginWrapper form {
+    margin-top: 1%;
+}
+
+.loginSearchWrapper {
+    margin-top: 1.2%;
+}
+
+.loginWrapper form input {
+    border: 1px solid #078675;
+    width: 20%;
+    height: 5.5vh;
+    margin-bottom: 1%;
+    border-radius: 7px;
+    padding-left: 20px;
+    outline: none;
+    font-size: 1rem;
+}
+
+.loginWrapper p {
+    margin-top: 5%;
+    color: #078675;
+    font-weight: 500;
+}
+
+.loginWrapper button {
+    width: 21.4%;
+    height: 5.5vh;
+    border: 1px solid #078675;
+    background-color: #078675;
+    color: #fff;
+    font-weight: bold;
+    font-size: 1rem;
+    font-family: 'Pretendard';
+    border-radius: 7px;
+}
+
+.loginSearchWrapper span {
+    color: #9CCFC8;
+    transition: 0.2s;
+}
+
+.loginSearchWrapper span:hover {
+    color: #078675;
+    cursor: pointer;
+}
+
+.loginSearchWrapper span:nth-child(1), .loginSearchWrapper span:nth-child(2) {
+    padding-right: 2.5%;
+    border-right: 1px solid #E6E6E6;
+}
+
+.loginSearchWrapper span:nth-child(2), .loginSearchWrapper span:nth-child(3) {
+    margin-left: 2.5%;
+}
+
+/* 기존 스타일 유지 */
+.password-wrapper {
+    position: relative;
+  }
+  
+  .password-toggle {
+    position: absolute;
+    right: 40.3%;
+    top: 40%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    width: 30px;
+    height: 25px;
+  }

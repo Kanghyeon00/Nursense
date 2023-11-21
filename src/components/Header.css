@@ -35,11 +35,11 @@
     border-right: 2px solid #E6E6E6;
 }
 
-.loginWrapper {
+.mainLoginWrapper {
     font-size: 1.1rem;
     font-family: 'Pretendard';
 }
 
-.loginWrapper span:hover {
+.mainLoginWrapper span:hover {
     cursor: pointer;
 }

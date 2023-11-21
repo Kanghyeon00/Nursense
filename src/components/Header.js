@@ -9,6 +9,10 @@ const Header = () => {
     navigate('/')
   }
 
+  const goToLogin = () => {
+    navigate('/login')
+  }
+
   return (
     <>
       <div className="headerContainer">
@@ -35,8 +39,8 @@ const Header = () => {
               <span>고객센터</span>
             </div>
           </div>
-          <div className="loginWrapper">
-            <span>로그인</span>
+          <div className="mainLoginWrapper">
+            <span onClick={goToLogin}>로그인</span>
           </div>
         </div>
       </div>

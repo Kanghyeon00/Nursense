@@ -46,6 +46,11 @@
   margin-top: 10%;
 }
 
+.termsTextWrapper {
+  width: 100%;
+  border: none;
+}
+
 .registrationForm .termsBox {
   margin-left: 0;
   cursor: pointer;
@@ -75,15 +80,15 @@
 }
 
 .termsWrapper span:nth-child(2),
-span:nth-child(4),
-span:nth-child(6),
-span:nth-child(8) {
+.termsWrapper span:nth-child(4),
+.termsWrapper span:nth-child(6),
+.termsWrapper span:nth-child(8) {
   color: #000;
   font-weight: 400;
 }
 
 .registrationForm .regiSubmitButton {
-  width: 105%;
+  width: 104%;
   height: 5vh;
   background-color: #078675;
   color: #fff;

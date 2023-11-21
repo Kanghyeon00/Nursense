@@ -308,7 +308,7 @@ const Register = () => {
                     onChange={() => setIsTermsChecked(!isTermsChecked)}
                   />
                 </div>
-                <div>
+                <div className="termsTextWrapper">
                   <span>서비스 이용약관</span>
                   <span> 및 </span>
                   <span>개인정보 취급방침</span>
