@@ -34,28 +34,21 @@ const Header = () => {
   };
 
   useEffect(() => {
+    // 새로고침 시 저장된 사용자 정보를 사용
     const userDataFromCookie = getUserDataFromCookie();
     if (userDataFromCookie) {
       dispatch({ type: 'SET_USER_DATA', payload: userDataFromCookie });
+    } else {
+      // 저장된 사용자 정보가 없으면 서버에서 가져옴
+      fetchUserData();
     }
-  }, [dispatch]);
+  }, [dispatch, isAuthenticated]);
 
   // 사용자 정보 가져오는 함수
   const fetchUserData = () => {
-    const token = cookies.get("token");
-
-    if (token && !isAuthenticated) {
-      axios.get("https://www.neusenseback.com/api/user/refresh", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
-        .then((response) => {
-          dispatch(loginSuccess(response.data));
-        })
-        .catch((error) => {
-          console.error("사용자 정보:", error);
-        });
+    const userDataFromCookie = getUserDataFromCookie();
+    if (userDataFromCookie) {
+      dispatch({ type: 'SET_USER_DATA', payload: userDataFromCookie });
     }
   };
 
@@ -89,12 +82,6 @@ const Header = () => {
         // 로그아웃 성공 처리
         console.log(response.data.msg);
   
-        // 쿠키 삭제
-        removeCookies();
-  
-        // 로컬 상태 업데이트
-        dispatch({ type: "LOGOUT" });
-  
         // 로그인 페이지로 이동
         navigate('/login');
       } else {
@@ -103,13 +90,23 @@ const Header = () => {
       }
     } catch (error) {
       console.error("로그아웃 중 오류 발생:", error);
+    } finally {
+      // 쿠키 삭제
+      removeCookies();
+  
+      // 로컬 상태 업데이트
+      dispatch({ type: "LOGOUT" });
     }
   };
 
   useEffect(() => {
+    // 새로고침 시 저장된 사용자 정보를 사용
     const userDataFromCookie = getUserDataFromCookie();
     if (userDataFromCookie) {
       dispatch({ type: 'SET_USER_DATA', payload: userDataFromCookie });
+    } else {
+      // 저장된 사용자 정보가 없으면 서버에서 가져옴
+      fetchUserData();
     }
   }, [dispatch]);
 
@@ -146,7 +143,7 @@ const Header = () => {
               <span className="headerUserName">{`${user.id}`}</span>
               <span> 님 </span>
               <span className="headerMyPageText" onClick={goToMyPage} >마이페이지</span>
-              <span onClick={handleLogout}>로그아웃</span>
+              <span className="headerLogOutText" onClick={handleLogout}>로그아웃</span>
               </div>
             </>
           ) : (

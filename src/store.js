@@ -1,13 +1,20 @@
 import { createStore } from 'redux';
 import authReducer from './reducer';
-import { getUserDataFromCookie } from './/components/cookies'; // 추가
+import { getUserDataFromCookie } from './components/cookies';
 
-const store = createStore(authReducer);
+// 초기 상태 설정
+const initialState = {
+  isAuthenticated: false,
+  user: null,
+};
 
-// 새로고침 시 사용자 데이터 불러오기
+// 사용자 정보 불러오기
 const userDataFromCookie = getUserDataFromCookie();
 if (userDataFromCookie) {
-  store.dispatch({ type: 'SET_USER_DATA', payload: userDataFromCookie });
+  initialState.isAuthenticated = true;
+  initialState.user = userDataFromCookie;
 }
 
+// Redux 스토어 생성
+const store = createStore(authReducer, initialState);
 export default store;

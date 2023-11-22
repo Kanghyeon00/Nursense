@@ -57,6 +57,10 @@
     color: #078675;
 }
 
-.loggedHeaderWrapper span:hover {
+.loggedHeaderWrapper .headerMyPageText:hover {
+    cursor: pointer;
+}
+
+.loggedHeaderWrapper span:nth-child(4):hover {
     cursor: pointer;
 }
