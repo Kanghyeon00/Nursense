@@ -1,17 +1,117 @@
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import "./Header.css";
+import { useDispatch, useSelector } from "react-redux";
+import axios from "axios";
+import './Header.css';
+import Cookies from "universal-cookie";
+import { loginSuccess } from "../actions";
+import { getUserDataFromCookie } from "./cookies";
 
 const Header = () => {
-
+  const isAuthenticated = useSelector((state) => state.isAuthenticated);
+  const user = useSelector((state) => state.user);
+  const dispatch = useDispatch();
   const navigate = useNavigate();
+  const cookies = new Cookies();
+
+  const goToMyPage = () => {
+    navigate('/mypage');
+  };
 
   const goToHome = () => {
-    navigate('/')
-  }
+    navigate('/');
+  };
 
   const goToLogin = () => {
-    navigate('/login')
-  }
+    navigate('/login');
+  };
+
+  const removeCookies = () => {
+    // 쿠키 삭제
+    cookies.remove("token");
+    cookies.remove("refreshToken");
+    cookies.remove("userId");
+  };
+
+  useEffect(() => {
+    const userDataFromCookie = getUserDataFromCookie();
+    if (userDataFromCookie) {
+      dispatch({ type: 'SET_USER_DATA', payload: userDataFromCookie });
+    }
+  }, [dispatch]);
+
+  // 사용자 정보 가져오는 함수
+  const fetchUserData = () => {
+    const token = cookies.get("token");
+
+    if (token && !isAuthenticated) {
+      axios.get("https://www.neusenseback.com/api/user/refresh", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+        .then((response) => {
+          dispatch(loginSuccess(response.data));
+        })
+        .catch((error) => {
+          console.error("사용자 정보:", error);
+        });
+    }
+  };
+
+    useEffect(() => {
+    // 새로고침 시 저장된 사용자 정보를 사용
+    const userDataFromCookie = getUserDataFromCookie();
+    if (userDataFromCookie) {
+      dispatch({ type: 'SET_USER_DATA', payload: userDataFromCookie });
+    } else {
+      // 저장된 사용자 정보가 없으면 서버에서 가져옴
+      fetchUserData();
+    }
+  }, [dispatch]);
+
+
+  const handleLogout = async () => {
+    try {
+      // 서버에 로그아웃 요청 보내기
+      const response = await axios.post(
+        "https://www.neusenseback.com/logout",
+        { id: user.id },
+        {
+          headers: {
+            Authorization: `Bearer ${user.token}`,
+          },
+        }
+      );
+  
+      // 서버 응답에 따라 클라이언트에서 처리
+      if (response.status === 200 && response.data.success) {
+        // 로그아웃 성공 처리
+        console.log(response.data.msg);
+  
+        // 쿠키 삭제
+        removeCookies();
+  
+        // 로컬 상태 업데이트
+        dispatch({ type: "LOGOUT" });
+  
+        // 로그인 페이지로 이동
+        navigate('/login');
+      } else {
+        // 로그아웃 실패 처리
+        console.error("로그아웃 실패");
+      }
+    } catch (error) {
+      console.error("로그아웃 중 오류 발생:", error);
+    }
+  };
+
+  useEffect(() => {
+    const userDataFromCookie = getUserDataFromCookie();
+    if (userDataFromCookie) {
+      dispatch({ type: 'SET_USER_DATA', payload: userDataFromCookie });
+    }
+  }, [dispatch]);
 
   return (
     <>
@@ -40,7 +140,18 @@ const Header = () => {
             </div>
           </div>
           <div className="mainLoginWrapper">
-            <span onClick={goToLogin}>로그인</span>
+          {isAuthenticated ? (
+            <>
+            <div className="loggedHeaderWrapper">
+              <span className="headerUserName">{`${user.id}`}</span>
+              <span> 님 </span>
+              <span className="headerMyPageText" onClick={goToMyPage} >마이페이지</span>
+              <span onClick={handleLogout}>로그아웃</span>
+              </div>
+            </>
+          ) : (
+            <span className="loginText" onClick={goToLogin}>로그인</span>
+          )}
           </div>
         </div>
       </div>

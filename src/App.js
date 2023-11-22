@@ -1,20 +1,42 @@
-import { Route, Routes } from "react-router-dom";
-import "./App.css";
-import Main from "./page/Main";
-import MyPage from "./page/MyPage";
-import Register from "./page/Register";
-import Login from "./page/Login";
+// App.js
+import React, { useEffect } from 'react';
+import { Provider, useDispatch } from 'react-redux';
+import { Route, Routes } from 'react-router-dom';
+import store from './store';
+import Main from './page/Main';
+import MyPage from './page/MyPage';
+import Register from './page/Register';
+import Login from './page/Login';
+import './App.css';
+import { loginSuccess } from '../src/actions';
+import { getTokenFromCookie } from '../src/components/cookies';
+
 
 function App() {
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    // 쿠키에서 유효한 토큰이 있는지 확인
+    const token = getTokenFromCookie();
+
+    if (token) {
+      // 사용자를 인증된 상태로 설정하는 액션을 디스패치
+      dispatch(loginSuccess({ token }));
+    }
+  }, [dispatch]);
+
   return (
-    <div className="App">
-      <Routes>
-        <Route path="/" element={<Main />} />
-        <Route path="/mypage" element={<MyPage />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/login" element={<Login />} />
-      </Routes>
-    </div>
+    <Provider store={store}>
+      <div className="App">
+        <Routes>
+          <Route path="/" element={<Main />} />
+          <Route path="/mypage" element={<MyPage />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/login" element={<Login />} />
+        </Routes>
+      </div>
+    </Provider>
   );
 }
 

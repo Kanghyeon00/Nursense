@@ -40,6 +40,23 @@
     font-family: 'Pretendard';
 }
 
-.mainLoginWrapper span:hover {
+.mainLoginWrapper .loginText:hover {
+    cursor: pointer;
+}
+
+.loggedHeaderWrapper span:nth-child(3) {
+    padding-right: 15px;
+    border-right: 1px solid #E6E6E6;
+}
+
+.loggedHeaderWrapper span:nth-child(4) {
+    margin-left: 15px;
+}
+
+.headerUserName {
+    color: #078675;
+}
+
+.loggedHeaderWrapper span:hover {
     cursor: pointer;
 }

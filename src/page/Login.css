@@ -8,7 +8,9 @@
 }
 
 .loginSearchWrapper {
-    margin-top: 1.2%;
+    margin-top: 30px;
+    width: 100%;
+    font-family: 'Pretendard';
 }
 
 .loginWrapper form input {
@@ -38,6 +40,12 @@
     font-size: 1rem;
     font-family: 'Pretendard';
     border-radius: 7px;
+    transition: 0.2s;
+}
+
+.loginWrapper button:hover {
+    cursor: pointer;
+    background-color: #067264;
 }
 
 .loginSearchWrapper span {

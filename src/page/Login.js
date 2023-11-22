@@ -3,10 +3,13 @@ import axios from "axios";
 import Header from "../components/Header";
 import "./Login.css";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from 'react-redux';
+import { loginSuccess } from '../actions';
 
 const Login = () => {
 
-    const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const goToRegister = () => {
     navigate('/register')
@@ -29,18 +32,25 @@ const Login = () => {
 
   const handleLogin = async (e) => {
     e.preventDefault();
-
+    
     try {
       const response = await axios.post(
         "https://www.neusenseback.com/login",
         loginData
       );
-
+  
       if (response.status === 200 && response.data.success) {
         // 로그인 성공
         console.log("로그인 성공:", response.data);
-
-        // 로그인 후에 필요한 추가 작업 수행
+  
+        // Redux 스토어에 로그인 성공 데이터 디스패치
+        dispatch(loginSuccess(response.data));
+  
+        // 쿠키에 토큰과 사용자 ID 저장
+        setTokenAndUserIdInCookie(response.data.token, response.data.id);
+  
+        // navigate를 사용하여 메인페이지로 이동
+        navigate('/');
       } else {
         // 로그인 실패
         console.error("로그인 실패:", response.data);
@@ -50,6 +60,15 @@ const Login = () => {
       console.error("로그인 중 오류 발생:", error);
     }
   };
+
+  const setTokenAndUserIdInCookie = (token, userId) => {
+    // 쿠키에 토큰 저장
+    document.cookie = `token=${token}; path=/`;
+  
+    // 쿠키에 사용자 ID 저장
+    document.cookie = `userId=${userId}; path=/`;
+  };
+  
 
   const togglePasswordVisibility = () => {
     const passwordInput = document.getElementById("password");
@@ -66,6 +85,7 @@ const Login = () => {
           <img
             className="loginLogo"
             src={`${process.env.PUBLIC_URL}/img/registerLogo.png`}
+            alt="logo"
           />
         </div>
         <p>Nursense에 로그인하여 더 많은 서비스를 경험하세요.</p>
