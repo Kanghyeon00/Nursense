@@ -30,43 +30,46 @@ const Login = () => {
     }));
   };
 
-  const handleLogin = async (e) => {
-    e.preventDefault();
-    
-    try {
-      const response = await axios.post(
-        "https://www.neusenseback.com/login",
-        loginData
-      );
-  
-      if (response.status === 200 && response.data.success) {
-        // 로그인 성공
-        console.log("로그인 성공:", response.data);
-  
-        // Redux 스토어에 로그인 성공 데이터 디스패치
-        dispatch(loginSuccess(response.data));
-  
-        // 쿠키에 토큰과 사용자 ID 저장
-        setTokenAndUserIdInCookie(response.data.token, response.data.id);
-  
-        // navigate를 사용하여 메인페이지로 이동
-        navigate('/');
-      } else {
-        // 로그인 실패
-        console.error("로그인 실패:", response.data);
-      }
-    } catch (error) {
-      // 네트워크 오류 등의 예외 처리
-      console.error("로그인 중 오류 발생:", error);
-    }
-  };
+const handleLogin = async (e) => {
+  e.preventDefault();
 
-  const setTokenAndUserIdInCookie = (token, userId) => {
+  try {
+    const response = await axios.post(
+      "https://www.neusenseback.com/login",
+      loginData
+    );
+
+    if (response.status === 200 && response.data.success) {
+      // 로그인 성공
+      console.log("로그인 성공:", response.data);
+
+      // Redux 스토어에 로그인 성공 데이터 디스패치
+      dispatch(loginSuccess(response.data));
+
+      // 쿠키에 토큰과 사용자 ID 저장
+      setTokenAndUserIdInCookie(response.data.token, response.data.refreshToken, response.data.id);
+
+      // navigate를 사용하여 메인페이지로 이동
+      navigate('/');
+    } else {
+      // 로그인 실패
+      console.error("로그인 실패:", response.data);
+    }
+  } catch (error) {
+    // 네트워크 오류 등의 예외 처리
+    console.error("로그인 중 오류 발생:", error);
+  }
+};
+
+  const setTokenAndUserIdInCookie = (token, refreshToken, id) => {
     // 쿠키에 토큰 저장
     document.cookie = `token=${token}; path=/`;
-  
+
+    // 쿠키에 리프레시 토큰 저장
+    document.cookie = `refreshToken=${refreshToken}; path=/`;
+
     // 쿠키에 사용자 ID 저장
-    document.cookie = `userId=${userId}; path=/`;
+    document.cookie = `id=${id}; path=/`;
   };
   
 

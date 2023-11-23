@@ -34,7 +34,7 @@ const Header = () => {
     // 쿠키 삭제
     cookies.remove("token");
     cookies.remove("refreshToken");
-    cookies.remove("userId");
+    cookies.remove("id");
   };
 
   useEffect(() => {

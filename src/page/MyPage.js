@@ -6,12 +6,17 @@ import ReadyModal from "../components/ReadyModal";
 import TabMenu from "../components/TabMenu";
 import ContentSlide from "../components/ContentSlide";
 import Footer from "../components/Footer";
+import Cookies from "universal-cookie";
 
 const MyPage = () => {
   const [userData, setUserData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
   const [isModalVisible, setModalVisible] = useState(false);
+  const cookies = new Cookies();
+  const userId = cookies.get("id");
+  const token = cookies.get("token");
+  const refreshToken = cookies.get("refreshToken");
 
   const handleInfoUpdateClick = () => {
     setModalVisible(true);
@@ -21,12 +26,16 @@ const MyPage = () => {
     setModalVisible(false);
   };
 
-  const id = 'tes123';
-
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`https://www.neusenseback.com/api/get/nursense/increase/${id}`);
+        // 쿠키에서 가져온 userId를 사용하여 API 호출
+        const response = await axios.get(`https://www.neusenseback.com/api/get/nursense/increase/${userId}`, {
+          headers: {
+            Authorization: `Bearer ${token}`, // API 요청에 토큰 추가
+            "x-refresh-token": refreshToken, // 리프레시 토큰도 헤더에 추가
+          },
+        });
 
         if (response.status === 200 && response.data.success) {
           setUserData(response.data.response);
@@ -41,7 +50,7 @@ const MyPage = () => {
     };
 
     fetchData();
-  }, [id]);
+  }, [userId, token, refreshToken]);
 
   return (
     <>

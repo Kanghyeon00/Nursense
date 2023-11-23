@@ -20,13 +20,13 @@ export const removeTokenCookie = () => {
 export const getUserDataFromCookie = () => {
     const cookies = new Cookies();
     const token = cookies.get("token");
-    const userId = cookies.get("userId");
+    const id = cookies.get("id");
   
     // 토큰과 사용자 ID가 모두 존재할 때만 반환
-    if (token && userId) {
+    if (token && id) {
       return {
         token,
-        id: userId,
+        id: id,
       };
     }
   
