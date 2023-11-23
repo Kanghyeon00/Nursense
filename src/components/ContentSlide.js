@@ -1,5 +1,6 @@
 import React from "react";
 import "./ContentSlide.css";
+import { useNavigate } from "react-router-dom";
 
 const ContentSlide = () => {
 
@@ -37,6 +38,10 @@ const ContentSlide = () => {
         // 추가적인 Content Card 데이터를 필요한 만큼 추가
       ];
 
+      const openLuncher = () => {
+        window.location.href = 'doublemlauncher://nursenselauncher';
+      };
+
   return (
     <>
       <div className="contentSlideContainer">
@@ -54,7 +59,7 @@ const ContentSlide = () => {
                     <p>{content.description}</p>
                   </div>
                   <div className="cardBottom">
-                    <button>{content.buttonText}</button>
+                    <button onClick={openLuncher}>{content.buttonText}</button>
                     <img src={content.imageUrl} alt={`Content ${index + 1} img`} />
                   </div>
                 </div>

@@ -2,6 +2,12 @@ import React from "react";
 import "./Footer.css";
 
 const Footer = () => {
+
+  const openDM = () => {
+    window.location.href = 'http://www.wmscompany.co.kr';
+  };
+
+  
   return (
     <>
       <div className="footerContainer">
@@ -11,6 +17,7 @@ const Footer = () => {
               className="footerDmLogo"
               src={`${process.env.PUBLIC_URL}/img/dmLogo.png`}
               alt="logo"
+              onClick={openDM}
             />
             <img
               className="sns"

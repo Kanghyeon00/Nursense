@@ -3,9 +3,8 @@
     display: flex;
     justify-content: space-between;
     margin: auto;
-    border: 1px solid #000;
     margin-top: 2%;
-    border: 3px solid #E6E6E6;
+    box-shadow: 3px 3px 10px 3px rgba(0, 0, 0, 0.1);
     border-radius: 25px;
     position: relative;
 }
@@ -63,4 +62,10 @@
     position: absolute;
     bottom: 29px;
     right: 40px;
+    transition: 0.2s;
+}
+
+.myPageButtonWrapper button:hover {
+    cursor: pointer;
+    background-color: #067264;
 }

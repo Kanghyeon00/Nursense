@@ -26,6 +26,10 @@ const Header = () => {
     navigate('/login');
   };
 
+  const goToDownload = () => {
+    window.location.href = 'https://www.dropbox.com/scl/fi/bst2tebaaac59vcdpzrdc/NursenseLauncher.exe?rlkey=8n0ha01f19jsolxmdi8bmwogu&dl=1';
+  };
+
   const removeCookies = () => {
     // 쿠키 삭제
     cookies.remove("token");
@@ -130,7 +134,7 @@ const Header = () => {
               <span>교육과정</span>
             </div>
             <div className="headerDownLoad headerLine">
-              <span>다운로드</span>
+              <span onClick={goToDownload}>다운로드</span>
             </div>
             <div className="headerContact">
               <span>고객센터</span>

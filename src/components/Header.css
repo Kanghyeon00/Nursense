@@ -3,7 +3,7 @@
     justify-content: center;
     justify-content: space-around;
     align-items: center;
-    border: 3px solid #E6E6E6;
+    box-shadow: 3px 3px 10px 3px rgba(0, 0, 0, 0.1);
     width: 70vw;
     height: 6vh;
     border-radius: 25px;
