@@ -87,12 +87,21 @@ const TabMenu = () => {
   ];
 
   const tabDataMap = {
-    1: 'bedsore',
-    2: 'diabetes',
-    3: 'foley',
-    4: 'nelaton',
-    5: 'Intramuscular',
-    6: 'Intravenous',
+    0: 'bedsore',
+    1: 'diabetes',
+    2: 'foley',
+    3: 'nelaton',
+    4: 'Intramuscular',
+    5: 'Intravenous',
+  };
+
+  const tabTimeData = {
+    0: 'bedsore_time',
+    1: 'diabetes_time',
+    2: 'foley_time',
+    3: 'nelaton_time',
+    4: 'Intramuscular_time',
+    5: 'Intravenous_time',
   };
 
   useEffect(() => {
@@ -107,8 +116,9 @@ const TabMenu = () => {
         });
 
         if (response.status === 200 && response.data.success) {
-          setUserData(response.data.response);
-          console.log(response.data.response)
+          // bedsore 값을 가져오도록 수정
+          const bedsoreProgress = response.data.response.bedsore;
+          setUserData({ ...response.data.response, bedsore: bedsoreProgress });
         } else {
           setError("데이터를 불러오는 데 실패했습니다.");
         }
@@ -118,6 +128,7 @@ const TabMenu = () => {
         setIsLoading(false);
       }
     };
+    
 
     fetchData();
   }, [userId, token, refreshToken]);
@@ -164,7 +175,7 @@ const TabMenu = () => {
             현재 {userData ? userData[tabDataMap[activeTab]] || 0 : 0}% <span>학습 하셨습니다</span>
             </p>
             <span>
-            마지막 실행일 : 2023.11.16(목) 17:53
+            {userData ? userData[tabTimeData[activeTab]] || "데이터를 불러오지 못했습니다" : "데이터를 불러오지 못했습니다"}
             </span>
           </div>
         </div>

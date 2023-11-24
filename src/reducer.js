@@ -12,7 +12,6 @@ const rootReducer = (state = initialState, action) => {
         user: action.payload,
       };
     case 'SET_USER_DATA':
-      console.log('SET_USER_DATA:', action.payload);
       return {
         ...state,
         isAuthenticated: true,

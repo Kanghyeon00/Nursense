@@ -47,9 +47,6 @@ const Header = () => {
             "x-refresh-token": user.refreshToken,
           },
         });
-
-        console.log(response.data); // 응답 데이터 콘솔에 출력
-
         if (response.status === 200 && response.data.success) {
           dispatch({ type: 'SET_USER_DATA', payload: response.data.response });
         } else {
@@ -76,9 +73,6 @@ const Header = () => {
 
       // 서버 응답에 따라 클라이언트에서 처리
       if (response.status === 200 && response.data.success) {
-        // 로그아웃 성공 처리
-        console.log(response.data.msg);
-
         // 로그인 페이지로 이동
         navigate('/login');
       } else {
