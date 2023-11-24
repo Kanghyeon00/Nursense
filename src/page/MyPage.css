@@ -69,3 +69,24 @@
     cursor: pointer;
     background-color: #067264;
 }
+
+.changePwButton {
+    width: 10rem;
+    height: 2.3rem;
+    background-color: #078675;
+    border: none;
+    color: #fff;
+    font-weight: 700;
+    font-size: 1rem;
+    font-family: 'pretendard';
+    border-radius: 7px;
+    position: absolute;
+    bottom: 29px;
+    right: 230px;
+    transition: 0.2s;
+}
+
+.changePwButton:hover {
+    cursor: pointer;
+    background-color: #067264;
+}

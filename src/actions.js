@@ -17,12 +17,12 @@ export const setUserData = (userData) => ({
 
 export const loginSuccess = (userData) => {
   // userData에서 필요한 정보만 추출
-  const { token, id, name } = userData;
+  const { token, id, name, password } = userData;
   const cookies = new Cookies();
   cookies.set("name", name, { path: '/' });
 
   return {
     type: 'LOGIN_SUCCESS',
-    payload: { token, id, name },
+    payload: { token, id, name, password },
   };
 };

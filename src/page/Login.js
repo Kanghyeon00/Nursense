@@ -76,7 +76,7 @@ const handleLogin = async (e) => {
     }
   } catch (error) {
     // 네트워크 오류 등의 예외 처리
-    console.error("로그인 중 오류 발생:", error);
+    alert('잘못된 요청입니다. 아이디 혹은 비밀번호를 확인해주세요.')
   }
 };
 

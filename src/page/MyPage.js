@@ -7,12 +7,14 @@ import TabMenu from "../components/TabMenu";
 import ContentSlide from "../components/ContentSlide";
 import Footer from "../components/Footer";
 import Cookies from "universal-cookie";
+import ChangePw from "../components/ChangePw";
 
 const MyPage = () => {
   const [userData, setUserData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
   const [isModalVisible, setModalVisible] = useState(false);
+  const [isChangePwModalVisible, setChangePwModalVisible] = useState(false);
   const cookies = new Cookies();
   const userId = cookies.get("id");
   const token = cookies.get("token");
@@ -24,6 +26,14 @@ const MyPage = () => {
 
   const handleModalClose = () => {
     setModalVisible(false);
+  };
+
+  const handleChangePwClick = () => {
+    setChangePwModalVisible(true);
+  };
+
+  const handleChangePwModalClose = () => {
+    setChangePwModalVisible(false);
   };
 
   useEffect(() => {
@@ -81,6 +91,7 @@ const MyPage = () => {
             <div className="myPageButtonWrapper">
               <button onClick={handleInfoUpdateClick}>나의 정보 수정</button>
             </div>
+            <button className="changePwButton" onClick={handleChangePwClick}>비밀번호 변경</button>
           </div>
           <TabMenu />
           <ContentSlide />
@@ -88,6 +99,9 @@ const MyPage = () => {
         </div>
       </div>
       {isModalVisible && <ReadyModal onClose={handleModalClose} />}
+      {isChangePwModalVisible && (
+        <ChangePw onClose={handleChangePwModalClose} />
+      )}
     </>
   );
 };
