@@ -4,7 +4,19 @@ import "./Footer.css";
 const Footer = () => {
 
   const openDM = () => {
-    window.location.href = 'http://www.wmscompany.co.kr';
+    window.location.href = 'http://www.wmscompany.co.kr'
+  };
+
+  const openInsta = () => {
+    window.location.href = 'https://www.instagram.com/wmsc.official/'
+  };
+
+  const openBlog = () => {
+    window.location.href = 'https://blog.naver.com/wmsc0202'
+  };
+
+  const openYoutube = () => {
+    window.location.href = 'https://www.youtube.com/@user-fy4yn4yk2c'
   };
 
   
@@ -23,16 +35,19 @@ const Footer = () => {
               className="sns"
               src={`${process.env.PUBLIC_URL}/img/instagram.png`}
               alt="snsLogo"
+              onClick={openInsta}
             />
             <img
               className="sns"
               src={`${process.env.PUBLIC_URL}/img/naver.png`}
               alt="snsLogo"
+              onClick={openBlog}
             />
             <img
               className="sns"
               src={`${process.env.PUBLIC_URL}/img/youtube.png`}
               alt="snsLogo"
+              onClick={openYoutube}
             />
           </div>
           <div className="companyInfo">
