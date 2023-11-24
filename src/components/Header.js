@@ -37,36 +37,28 @@ const Header = () => {
     cookies.remove("id");
   };
 
-  useEffect(() => {
-    // 새로고침 시 저장된 사용자 정보를 사용
-    const userDataFromCookie = getUserDataFromCookie();
-    if (userDataFromCookie) {
-      dispatch({ type: 'SET_USER_DATA', payload: userDataFromCookie });
-    } else {
-      // 저장된 사용자 정보가 없으면 서버에서 가져옴
-      fetchUserData();
-    }
-  }, [dispatch, isAuthenticated]);
+  const fetchUserData = async () => {
+    try {
+      if (isAuthenticated && user && user.id && user.token && user.refreshToken) {
+        const response = await axios.get(`https://www.neusenseback.com/api/get/nursense/increase/${user.id}`, {
+          headers: {
+            Authorization: `Bearer ${user.token}`,
+            "x-refresh-token": user.refreshToken,
+          },
+        });
 
-  // 사용자 정보 가져오는 함수
-  const fetchUserData = () => {
-    const userDataFromCookie = getUserDataFromCookie();
-    if (userDataFromCookie) {
-      dispatch({ type: 'SET_USER_DATA', payload: userDataFromCookie });
+        console.log(response.data); // 응답 데이터 콘솔에 출력
+
+        if (response.status === 200 && response.data.success) {
+          dispatch({ type: 'SET_USER_DATA', payload: response.data.response });
+        } else {
+          console.error("데이터를 불러오는 데 실패했습니다.");
+        }
+      }
+    } catch (error) {
+      console.error("데이터를 불러오는 도중 오류가 발생했습니다.", error);
     }
   };
-
-    useEffect(() => {
-    // 새로고침 시 저장된 사용자 정보를 사용
-    const userDataFromCookie = getUserDataFromCookie();
-    if (userDataFromCookie) {
-      dispatch({ type: 'SET_USER_DATA', payload: userDataFromCookie });
-    } else {
-      // 저장된 사용자 정보가 없으면 서버에서 가져옴
-      fetchUserData();
-    }
-  }, [dispatch]);
-
 
   const handleLogout = async () => {
     try {
@@ -80,12 +72,12 @@ const Header = () => {
           },
         }
       );
-  
+
       // 서버 응답에 따라 클라이언트에서 처리
       if (response.status === 200 && response.data.success) {
         // 로그아웃 성공 처리
         console.log(response.data.msg);
-  
+
         // 로그인 페이지로 이동
         navigate('/login');
       } else {
@@ -97,20 +89,24 @@ const Header = () => {
     } finally {
       // 쿠키 삭제
       removeCookies();
-  
+
       // 로컬 상태 업데이트
       dispatch({ type: "LOGOUT" });
     }
   };
 
   useEffect(() => {
-    // 새로고침 시 저장된 사용자 정보를 사용
+    // 최초 렌더링 시 또는 user가 변경될 때만 fetchData 호출
+    if (!user || (isAuthenticated && user.id && user.token && user.refreshToken)) {
+      fetchUserData();
+    }
+  }, [dispatch, isAuthenticated, user]);
+
+  // 페이지가 새로고침될 때 쿠키에서 사용자 정보를 다시 불러옴
+  useEffect(() => {
     const userDataFromCookie = getUserDataFromCookie();
     if (userDataFromCookie) {
       dispatch({ type: 'SET_USER_DATA', payload: userDataFromCookie });
-    } else {
-      // 저장된 사용자 정보가 없으면 서버에서 가져옴
-      fetchUserData();
     }
   }, [dispatch]);
 
@@ -141,18 +137,18 @@ const Header = () => {
             </div>
           </div>
           <div className="mainLoginWrapper">
-          {isAuthenticated ? (
-            <>
-            <div className="loggedHeaderWrapper">
-              <span className="headerUserName">{`${user.id}`}</span>
-              <span> 님 </span>
-              <span className="headerMyPageText" onClick={goToMyPage} >마이페이지</span>
-              <span className="headerLogOutText" onClick={handleLogout}>로그아웃</span>
-              </div>
-            </>
-          ) : (
-            <span className="loginText" onClick={goToLogin}>로그인</span>
-          )}
+            {isAuthenticated ? (
+              <>
+                <div className="loggedHeaderWrapper">
+                  <span className="headerUserName">{`${user.name}`}</span>
+                  <span> 님 </span>
+                  <span className="headerMyPageText" onClick={goToMyPage} >마이페이지</span>
+                  <span className="headerLogOutText" onClick={handleLogout}>로그아웃</span>
+                </div>
+              </>
+            ) : (
+              <span className="loginText" onClick={goToLogin}>로그인</span>
+            )}
           </div>
         </div>
       </div>

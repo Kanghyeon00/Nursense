@@ -1,11 +1,18 @@
-import React from 'react';
-import './CircularProgress.css'; // 스타일 파일
+import React, { useEffect, useState } from "react";
+import "./CircularProgress.css";
+import axios from "axios";
+import Cookies from "universal-cookie";
 
 const CircularProgress = ({ progress }) => {
-  const radius = 70; //원 크기 조절
-  const strokeWidth = 16; // 선 두께를 조절
+  const radius = 70;
+  const strokeWidth = 16;
   const circumference = 2 * Math.PI * radius;
-  const strokeDashoffset = circumference - (progress / 100) * circumference;
+  const [strokeDashoffset, setStrokeDashoffset] = useState(circumference);
+
+  useEffect(() => {
+    const newOffset = circumference - (progress / 100) * circumference;
+    setStrokeDashoffset(newOffset);
+  }, [progress, circumference]);
 
   return (
     <svg className="circular-progress" width={radius * 2} height={radius * 2}>

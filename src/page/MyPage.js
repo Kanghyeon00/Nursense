@@ -39,6 +39,7 @@ const MyPage = () => {
 
         if (response.status === 200 && response.data.success) {
           setUserData(response.data.response);
+          console.log(response.data.response)
         } else {
           setError("데이터를 불러오는 데 실패했습니다.");
         }
@@ -61,19 +62,20 @@ const MyPage = () => {
             <div className="myPageInfo">
               <p>Nursense 마이페이지</p>
               <div className="myPageName">
-                <span>Data</span>
+                <span>{userData?.name || "Guest"}</span>
+                {/* userData가 null이거나 undefined인 경우에는 "Guest"를 보여줌 */}
                 <span> 님 </span>
                 <span>반갑습니다.</span>
               </div>
               <div className="myPageSchool">
                 <p>
-                  학교정보 : <span>가톨릭 대학교</span>
+                  학교정보 : <span>{userData?.school || "학교 정보 없음"}</span>
                 </p>
                 <p>
-                  학과정보 : <span>간호학과</span>
+                  학과정보 : <span>{userData?.department || "학과 정보 없음"}</span>
                 </p>
                 <p>
-                  학번정보 : <span>2012010100</span>
+                  학번정보 : <span>{userData?.student_id || "학번 정보 없음"}</span>
                 </p>
               </div>
             </div>

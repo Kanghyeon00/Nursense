@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./TabMenu.css";
 import axios from "axios";
 import CircularProgress from "./CircularProgress";
+import Cookies from "universal-cookie";
 
 const TabMenu = () => {
   const increaseProgress = async (id, className, progress) => {
@@ -30,6 +31,15 @@ const TabMenu = () => {
   const handleTabClick = (index) => {
     setActiveTab(index);
   };
+
+  const [userData, setUserData] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [isModalVisible, setModalVisible] = useState(false);
+  const cookies = new Cookies();
+  const userId = cookies.get("id");
+  const token = cookies.get("token");
+  const refreshToken = cookies.get("refreshToken");
 
   const tabs = [
     "욕창 의료실습",
@@ -76,6 +86,46 @@ const TabMenu = () => {
     "근육주사 의료실습",
   ];
 
+  const tabDataMap = {
+    1: 'bedsore',
+    2: 'diabetes',
+    3: 'foley',
+    4: 'nelaton',
+    5: 'Intramuscular',
+    6: 'Intravenous',
+  };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        // 쿠키에서 가져온 userId를 사용하여 API 호출
+        const response = await axios.get(`https://www.neusenseback.com/api/get/nursense/increase/${userId}`, {
+          headers: {
+            Authorization: `Bearer ${token}`, // API 요청에 토큰 추가
+            "x-refresh-token": refreshToken, // 리프레시 토큰도 헤더에 추가
+          },
+        });
+
+        if (response.status === 200 && response.data.success) {
+          setUserData(response.data.response);
+          console.log(response.data.response)
+        } else {
+          setError("데이터를 불러오는 데 실패했습니다.");
+        }
+      } catch (error) {
+        setError("데이터를 불러오는 도중 오류가 발생했습니다.");
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchData();
+  }, [userId, token, refreshToken]);
+  
+  const openLuncher = () => {
+    window.location.href = 'doublemlauncher://nursenselauncher';
+  };
+
   return (
     <>
       <div className="tabMenuWrapper">
@@ -96,12 +146,12 @@ const TabMenu = () => {
       <div className="tabMenuContainer">
         <div className="tabMenuProfileWrapper">
           <h2>{contents[activeTab]}</h2>
-          <span className="profileName">Data</span><span> 님의</span>
+          <span className="profileName">{userData?.name || "Guest"}</span><span> 님의</span>
           <p>{tabsProfile[activeTab]}</p>
         </div>
         <div className="tabMenuProgressContainer">
           <div className="tabMenuProgressWrapper">
-            <CircularProgress progress={100} />
+            <CircularProgress progress={userData ? userData[tabDataMap[activeTab]] || 0 : 0} />
           </div>
           <div className="tabMenuProgressInfoWrapper">
             <p>
@@ -111,7 +161,7 @@ const TabMenu = () => {
             {contentsTitle[activeTab]}
             </span>
             <p>
-            현재 100% <span>학습 하셨습니다</span>
+            현재 {userData ? userData[tabDataMap[activeTab]] || 0 : 0}% <span>학습 하셨습니다</span>
             </p>
             <span>
             마지막 실행일 : 2023.11.16(목) 17:53
@@ -119,7 +169,7 @@ const TabMenu = () => {
           </div>
         </div>
         <div className="tabMenuButtonWrapper">
-          <button>학습하기 → </button>
+          <button onClick={openLuncher}>학습하기 → </button>
         </div>
       </div>
     </>

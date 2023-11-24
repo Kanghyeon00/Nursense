@@ -12,8 +12,10 @@ const rootReducer = (state = initialState, action) => {
         user: action.payload,
       };
     case 'SET_USER_DATA':
+      console.log('SET_USER_DATA:', action.payload);
       return {
         ...state,
+        isAuthenticated: true,
         user: action.payload,
       };
     case 'LOGOUT':
@@ -26,5 +28,6 @@ const rootReducer = (state = initialState, action) => {
       return state;
   }
 };
+
 
 export default rootReducer;

@@ -3,3 +3,11 @@ text {
   fill: #078675;
   font-weight: bold; /* 폰트 굵게 만들기 */
 }
+
+.circular-progress {
+  position: relative;
+}
+
+.progress-indicator {
+  transition: stroke-dashoffset 0.5s ease-in-out;
+}

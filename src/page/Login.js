@@ -44,7 +44,8 @@ const handleLogin = async (e) => {
       console.log("로그인 성공:", response.data);
 
       // Redux 스토어에 로그인 성공 데이터 디스패치
-      dispatch(loginSuccess(response.data));
+      dispatch(loginSuccess(response.data)); // 전체 사용자 데이터를 전달
+
 
       // 쿠키에 토큰과 사용자 ID 저장
       setTokenAndUserIdInCookie(response.data.token, response.data.refreshToken, response.data.id);

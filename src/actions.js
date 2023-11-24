@@ -1,3 +1,5 @@
+import Cookies from "universal-cookie";
+
 // actions.js
 export const login = (userData) => ({
   type: 'LOGIN',
@@ -13,12 +15,14 @@ export const setUserData = (userData) => ({
   payload: userData,
 });
 
-export const loginSuccess = (data) => {
-  // data에서 token과 id를 추출
-  const { token, id } = data;
+export const loginSuccess = (userData) => {
+  // userData에서 필요한 정보만 추출
+  const { token, id, name } = userData;
+  const cookies = new Cookies();
+  cookies.set("name", name, { path: '/' });
 
   return {
     type: 'LOGIN_SUCCESS',
-    payload: { token, id }, // 토큰과 사용자 ID를 함께 저장
+    payload: { token, id, name },
   };
 };
