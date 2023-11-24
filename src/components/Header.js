@@ -35,6 +35,7 @@ const Header = () => {
     cookies.remove("token");
     cookies.remove("refreshToken");
     cookies.remove("id");
+    cookies.remove("name");
   };
 
   const fetchUserData = async () => {

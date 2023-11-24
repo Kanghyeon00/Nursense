@@ -18,18 +18,15 @@ export const removeTokenCookie = () => {
 // cookies.js
 
 export const getUserDataFromCookie = () => {
-    const cookies = new Cookies();
-    const token = cookies.get("token");
-    const id = cookies.get("id");
-  
-    // 토큰과 사용자 ID가 모두 존재할 때만 반환
-    if (token && id) {
-      return {
-        token,
-        id: id,
-      };
-    }
-  
+  const cookies = new Cookies();
+  const token = cookies.get("token");
+  const refreshToken = cookies.get("refreshToken");
+  const id = cookies.get("id");
+  const name = cookies.get("name"); // 추가된 부분
+
+  if (token && refreshToken && id && name) {
+    return { token, refreshToken, id, name }; // name 값을 추가하여 반환
+  } else {
     return null;
-  };
-  
+  }
+};
