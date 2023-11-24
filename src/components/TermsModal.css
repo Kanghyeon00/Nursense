@@ -51,4 +51,5 @@
   
   .closeModalButton:hover {
     background-color: #067264; /* 확인 버튼 hover 시 배경색 변경 */
+    cursor: pointer;
   }

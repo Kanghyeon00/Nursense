@@ -5,6 +5,8 @@ import "./Login.css";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from 'react-redux';
 import { loginSuccess } from '../actions';
+import FindId from "../components/FindId";
+import FindPw from "../components/FindPw";
 
 const Login = () => {
 
@@ -21,6 +23,24 @@ const Login = () => {
   });
 
   const [showPassword, setShowPassword] = useState(false);
+  const [isFindIdModalOpen, setFindIdModalOpen] = useState(false);
+  const [isFindPwModalOpen, setFindPwModalOpen] = useState(false);
+
+  const openFindIdModal = () => {
+    setFindIdModalOpen(true);
+  };
+
+  const closeFindIdModal = () => {
+    setFindIdModalOpen(false);
+  };
+  
+  const openFindPwModal = () => {
+    setFindPwModalOpen(true);
+  };
+
+  const closeFindPwModal = () => {
+    setFindPwModalOpen(false);
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -126,11 +146,13 @@ const handleLogin = async (e) => {
           <button type="submit">로그인</button>
         </form>
         <div className="loginSearchWrapper">
-          <span>아이디 찾기</span>
-          <span>비밀번호 찾기</span>
+          <span onClick={openFindIdModal}>아이디 찾기</span>
+          <span onClick={openFindPwModal}>비밀번호 찾기</span>
           <span onClick={goToRegister}>회원가입</span>
         </div>
       </div>
+      {isFindIdModalOpen && <FindId closeModal={closeFindIdModal} />}
+      {isFindPwModalOpen && <FindPw closeModal={closeFindPwModal} />}
     </div>
   );
 };
