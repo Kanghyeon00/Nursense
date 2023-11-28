@@ -1,6 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    // IMQA web-agent.js 연결
+<script src="https://cdn.imqa.io/agent/web-agent-1.1.11.js"></script>
+
+// IMQA web-agent 스크립트 필수 값
+<script>
+((w, c, _wv, _w, _wk, _mh, _b) => {
+    w[c] = w[c] || {};
+    function imqaConf(key, value){w[c][key]=value};
+
+    imqaConf("imqaAgentUse", true);
+    imqaConf("projectKey", "사용자 프로젝트키");
+
+    w[_w](w);
+})(window, 'imqaClientConfig', 'IMQAWebviewMain', 'IMQAWebMain', 'webkit', 'messageHandlers', 'ImqaBridge')
+</script>
+
     <meta charset="utf-8" />
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
