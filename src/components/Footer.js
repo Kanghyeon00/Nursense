@@ -33,7 +33,7 @@ const Footer = () => {
             />
             <img
               className="sns"
-              src={`${process.env.PUBLIC_URL}/img/instagram.png`}
+              src={`${process.env.PUBLIC_URL}/img/insta.png`}
               alt="snsLogo"
               onClick={openInsta}
             />
