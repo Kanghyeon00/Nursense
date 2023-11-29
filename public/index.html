@@ -1,23 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
   <head>
-    <script src="https://cdn.imqa.io/agent/web-agent-1.1.11.js"></script>
-    <script>
-    ((w, c, _wv, _w, _wk, _mh, _b) => {
-        w[c] = w[c] || {};
-        function imqaConf(key, value){w[c][key]=value};
-    
-        // 필수 설정
-        imqaConf("imqaAgentUse", true); // IMQA Agent 사용여부
-        imqaConf("projectKey", "사용자 프로젝트키"); // 사용자 프로젝트키
-    
-        // SPA 전용 옵션 설정
-        imqaConf("SPACollectInitTime", 5000); // SPA 수집시간설정
-        imqaConf("SPARootDom", "#container"); // SPA ROOT DOM
-    
-        w[_w](w);
-    })(window, 'imqaClientConfig', 'IMQAWebviewMain', 'IMQAWebMain', 'webkit', 'messageHandlers', 'ImqaBridge')
-    </script>  
+<script src="https://cdn.imqa.io/agent/web-agent-1.1.11.js"></script>
+<script>
+((w, c, _wv, _w, _wk, _mh, _b) => {
+w[c] = w[c] || {};
+function imqaConf(key, value){w[c][key]=value};
+// 필수 설정
+imqaConf("imqaAgentUse", true); // IMQA Agent 사용여부
+imqaConf("projectKey", "$2b$05$UCeQTsyYCUNrCvM4XmoAYuyHOiMir5mpOtnmzNrIUeNuGsbr7Pcem^#Gbv30QRIbcZkWumbVkG6qQ=="); // 사용자 프로젝트키
+// SPA 전용 옵션 설정
+imqaConf("SPACollectInitTime", 5000); // SPA 수집시간설정
+imqaConf("SPARootDom", "#root"); // SPA ROOT DOM
+w[_w](w);
+})(window, 'imqaClientConfig', 'IMQAWebviewMain', 'IMQAWebMain', 'webkit',
+'messageHandlers', 'ImqaBridge')
+</script>
 
     <meta charset="utf-8" />
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />

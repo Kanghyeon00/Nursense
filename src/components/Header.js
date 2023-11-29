@@ -22,6 +22,10 @@ const Header = () => {
     navigate('/');
   };
 
+  const goToCurr = () => {
+    navigate('/curriculum/learn'); // '/target-page'로 이동
+  };
+
   const goToLogin = () => {
     navigate('/login');
   };
@@ -122,7 +126,7 @@ const Header = () => {
               <span>Nursense 소개</span>
             </div>
             <div className="headerCurr headerLine">
-              <span>교육과정</span>
+              <span onClick={goToCurr}>교육과정</span>
             </div>
             <div className="headerDownLoad headerLine">
               <span onClick={goToDownload}>다운로드</span>

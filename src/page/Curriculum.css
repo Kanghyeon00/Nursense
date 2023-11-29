@@ -1,0 +1,119 @@
+.currWrapper {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 5%;
+}
+
+.currNavWrapper {
+    position: sticky;
+    top: 10%;
+    width: 13%;
+    height: 100%;
+    margin-left: 0.9%;
+}
+
+.currNameBar {
+    width: 84.4vw;
+    height: 10vh;
+    background: linear-gradient(to right, #212880 , #4A227B);
+    color: #fff;
+    display: flex;
+    align-items: center;
+}
+
+.currNameBar span {
+    margin-left: 2%;
+    font-size: 1.2rem;
+}
+
+.currLearnInfo1 {
+    display: flex;
+    align-items: center;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, .15);
+    padding: 2rem;
+    margin-top: 3%;
+    border-radius: 15px;
+    justify-content: space-between;
+}
+
+.currLearnButtonWrapper button {
+    background-color: #3941A2;
+    border: none;
+    padding: 1rem 2rem;
+    color: #fff;
+    font-weight: 500;
+    font-size: 1rem;
+    font-family: 'Pretendard';
+    border-radius: 10px;
+}
+
+.currLearnButtonWrapper button:hover {
+    cursor: pointer;
+}
+
+.currLearnTitle {
+    margin-bottom: 3%;
+}
+
+.currLearnTitle span {
+    color: #3941A2;
+}
+
+.currLearnTitle span:nth-child(1) {
+    border: 1px solid #aaa;
+    padding: 5px 10px;
+    border-radius: 20px;
+}
+
+.currLearnTitle span:nth-child(2) {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-left: 2%;
+}
+
+.currLearnDate span:nth-child(2) {
+    margin: 0 2%;
+}
+
+.currNavWrapper h2 {
+    font-size: 2rem;
+    color: #3941A2;
+    text-align: center;
+}
+
+.currNavWrapper p {
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+.currNavWrapper ul {
+    padding: 0;
+}
+
+.currNavWrapper li {
+    font-size: 1.2rem;
+    margin-bottom: 7%;
+    text-align: center;
+    list-style: none;
+    transition: 0.3s;
+}
+
+.currNavWrapper li:hover {
+    cursor: pointer;
+    color: #3941A2;
+}
+
+.learnPageText {
+    color: #3941A2; /* 또는 원하는 색상 */
+  }
+  
+  .normalText {
+    color: #aaa; /* 또는 원하는 색상 */
+  }
+
+  .currLearnButtonWrapper p {
+    font-size: 1.2rem;
+    font-weight: 700;
+    text-align: center;
+  }

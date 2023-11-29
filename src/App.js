@@ -10,6 +10,10 @@ import Login from './page/Login';
 import './App.css';
 import { loginSuccess } from '../src/actions';
 import { getTokenFromCookie } from '../src/components/cookies';
+import Curriculum from './page/Curriculum';
+import CurrEvaluation from './page/CurrEvaluation';
+import Guide from './page/Guide';
+import CurrLearning from './page/CurrLearning';
 
 
 function App() {
@@ -34,6 +38,10 @@ function App() {
           <Route path="/mypage" element={<MyPage />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/curriculum/learn" element={<Curriculum />} />
+        <Route path="/curriculum/evaluation" element={<CurrEvaluation />} />
+        <Route path="/curriculum/guide" element={<Guide />} />
+        <Route path="/curriculum/learning" element={<CurrLearning />} />
         </Routes>
       </div>
     </Provider>

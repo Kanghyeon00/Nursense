@@ -1,0 +1,19 @@
+.currGuideWrapper {
+    display: flex;
+    justify-content: space-between;
+    height: 100vh;
+}
+
+.currNameBar2 {
+    width: 84.4vw;
+    height: 10vh;
+    background: linear-gradient(to right, #212880 , #4A227B);
+    color: #fff;
+    display: flex;
+    align-items: center;
+}
+
+.currNameBar2 span {
+    margin-left: 2%;
+    font-size: 1.2rem;
+}

@@ -1,0 +1,94 @@
+.currLearningWrapper {
+    display: flex;
+    justify-content: space-between;
+}
+
+.currLearningCard {
+    display: flex;
+    align-items: center;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, .15);
+    padding: 2rem;
+    margin-top: 3%;
+    
+    border-radius: 15px;
+    margin-right: 5%;
+    transition: 0.2s;
+}
+
+.currLearningCard:hover {
+    transform: scale(1.05);
+}
+
+.currLearningPercent {
+    font-size: 2.5rem;
+    padding: 2rem;
+    text-align: center;
+    margin-right: 2.5%;
+}
+
+.currLearningInfo {
+    display: flex;
+}
+
+.currLearningTitle {
+    margin-bottom: 3%;
+}
+
+.currLearningTitle span:nth-child(1) {
+    font-size: 1.3rem;
+    color: #3941A2;
+    margin-right: 4%;
+    font-weight: bold;
+}
+
+.currLearningTitle span:nth-child(2) {
+    font-weight: bold;
+}
+
+.currLearningDate span:nth-child(2) {
+    margin: 0 2%;
+}
+
+.currLearningBottom span:nth-child(3) {
+    margin: 0 5%;
+}
+
+.currLearningBottom span:nth-child(6) {
+    margin: 0 5%;
+}
+
+.currLearningBottom span:nth-child(2) {
+    color: red;
+}
+
+.currLearningBottom span:nth-child(5) {
+    color: red;
+}
+
+.currLearningBottom span:nth-child(8) {
+    color: red;
+}
+
+.currLearningBottom2 span:nth-child(3) {
+    margin: 0 5%;
+}
+
+.currLearningBottom2 span:nth-child(6) {
+    margin: 0 5%;
+}
+
+.currLearningBottom2 span:nth-child(2) {
+    color: #3941A2;
+}
+
+.currLearningBottom2 span:nth-child(5) {
+    color: #3941A2;
+}
+
+.currLearningBottom2 span:nth-child(8) {
+    color: #3941A2;
+}
+
+.forBottom {
+    height: 150vh;
+}
