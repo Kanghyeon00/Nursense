@@ -81,9 +81,6 @@
     font-family: "Pretendard";
     font-size: 1.1rem;
     transition: 0.2s;
-    position: absolute;
-    top: 500px;
-    right: 340px;
   }
   
   .changeButtonWrapper button:hover {
