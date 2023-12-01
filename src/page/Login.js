@@ -7,6 +7,7 @@ import { useDispatch } from 'react-redux';
 import { loginSuccess } from '../actions';
 import FindId from "../components/FindId";
 import FindPw from "../components/FindPw";
+import LoginFooter from "../components/LoginFooter";
 
 const Login = () => {
 
@@ -153,6 +154,7 @@ const handleLogin = async (e) => {
       </div>
       {isFindIdModalOpen && <FindId closeModal={closeFindIdModal} />}
       {isFindPwModalOpen && <FindPw closeModal={closeFindPwModal} />}
+      <LoginFooter />
     </div>
   );
 };

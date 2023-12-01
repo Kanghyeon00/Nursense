@@ -19,11 +19,18 @@ const ChangePw = ({ onClose }) => {
   };
 
   useEffect(() => {
+    let isMounted = true;
+  
     const checkPassword = async () => {
+      // 입력값이 비어있는 경우에는 체크를 수행하지 않음
+      if (currentPw.trim() === "") {
+        return;
+      }
+  
       try {
         const cookies = new Cookies();
         const userToken = cookies.get("token");
-
+  
         const response = await axios.post(
           "https://www.neusenseback.com/api/checkpw",
           { password: currentPw },
@@ -33,31 +40,36 @@ const ChangePw = ({ onClose }) => {
             },
           }
         );
-
-        console.log(response.data);
-
-        if (response.status === 200 && response.data.success) {
-          setPwCheckResult(true);
-          setErrorMessage(""); // 성공하면 에러 메시지 초기화
-        } else {
-          setPwCheckResult(false);
-          setErrorMessage(response.data.msg || "비밀번호를 확인해주세요.");
+  
+        if (isMounted) {
+          if (response.status === 200 && response.data.success) {
+            setPwCheckResult(true);
+            setErrorMessage(""); // 성공하면 에러 메시지 초기화
+          } else {
+            setPwCheckResult(false);
+            setErrorMessage(response.data.msg || "비밀번호를 확인해주세요.");
+          }
         }
       } catch (error) {
-        // 서버 응답에 오류가 있을 때 처리
-        console.error("비밀번호 체크 중 오류:", error);
-
-        // 오류 메시지 설정
-        setPwCheckResult(false);
-        setErrorMessage("현재 비밀번호가 틀렸습니다.");
+        if (isMounted) {
+          // 서버 응답에 오류가 있을 때 처리
+          console.error("비밀번호 체크 중 오류:", error);
+  
+          // 오류 메시지 설정
+          setPwCheckResult(false);
+          setErrorMessage("현재 비밀번호가 틀렸습니다.");
+        }
       }
     };
-
+  
     const timeoutId = setTimeout(() => {
       checkPassword();
     }, 1000);
-
-    return () => clearTimeout(timeoutId);
+  
+    return () => {
+      isMounted = false;
+      clearTimeout(timeoutId);
+    };
   }, [currentPw]);
 
   const handleCurrentPwChange = (e) => {
@@ -67,6 +79,12 @@ const ChangePw = ({ onClose }) => {
   const handleNewPwChange = (e) => {
     const value = e.target.value;
     setNewPw(value);
+
+// 입력값이 비어있는 경우 유효성 검사를 수행하지 않음
+    if (value.trim() === "") {
+      setNewPwError("");
+      return;
+    }
 
     // 비밀번호 유효성 검사
     if (/^[a-zA-Z0-9]{6,}$/.test(value)) {
@@ -88,6 +106,11 @@ const ChangePw = ({ onClose }) => {
   const handleConfirmPwChange = (e) => {
     const value = e.target.value;
     setConfirmPw(value);
+
+    if (value.trim() === "") {
+      setNewPwError("");
+      return;
+    }
 
     // 비밀번호 일치 여부 검사
     if (value !== newPw) {

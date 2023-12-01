@@ -1,0 +1,22 @@
+.loginFooterWrapper {
+    margin-top: 5%;
+}
+
+.loginFooterCopy {
+    width: 70%;
+    margin: auto;
+}
+
+.loginFooterCopy span {
+    font-weight: bold;
+
+}
+
+.loginFooterCopy span:nth-child(2) {
+    padding-right: 1.5%;
+    border-right: 2px solid #E6E6E6;
+}
+
+.loginFooterCopy span:nth-child(3) {
+    margin-left: 1.5%;
+}

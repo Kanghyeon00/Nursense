@@ -1,6 +1,5 @@
 import React from "react";
 import "./ContentSlide.css";
-import { useNavigate } from "react-router-dom";
 
 const ContentSlide = () => {
 
@@ -30,7 +29,7 @@ const ContentSlide = () => {
             imageUrl: `${process.env.PUBLIC_URL}/img/cardImg.png`,
           },
           {
-            title: "욕창 임상실습",
+            title: "근육주사 임상실습",
             description: "욕창 관리부터 치료까지 메타버스로\n 진행하는예비 의료 실습",
             buttonText: "학습하기",
             imageUrl: `${process.env.PUBLIC_URL}/img/cardImg.png`,

@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import Header from "../components/Header";
 import axios from "axios";
 import "./Register.css";
-import Footer from "../components/Footer";
 import TermsModal from "../components/TermsModal";
 import { useNavigate } from "react-router-dom";
 import SuccessModal from "../components/SuccessModal";
+import LoginFooter from "../components/LoginFooter";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -334,7 +334,7 @@ const Register = () => {
             )}
           </div>
         </div>
-        <Footer />
+        <LoginFooter />
       </div>
     </>
   );
