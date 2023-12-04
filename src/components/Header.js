@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
@@ -6,6 +6,7 @@ import './Header.css';
 import Cookies from "universal-cookie";
 import { loginSuccess } from "../actions";
 import { getUserDataFromCookie } from "./cookies";
+import ReadyModal from "./ReadyModal";
 
 const Header = () => {
   const isAuthenticated = useSelector((state) => state.isAuthenticated);
@@ -13,6 +14,15 @@ const Header = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const cookies = new Cookies();
+  const [isReadyModalOpen, setIsReadyModalOpen] = useState(false);
+
+  const openReadyModal = () => {
+    setIsReadyModalOpen(true);
+  };
+
+  const closeReadyModal = () => {
+    setIsReadyModalOpen(false);
+  };
 
   const goToMyPage = () => {
     navigate('/mypage');
@@ -28,6 +38,10 @@ const Header = () => {
 
   const goToLogin = () => {
     navigate('/login');
+  };
+
+  const goToCustomer = () => {
+    navigate('/customer');
   };
 
   const goToDownload = () => {
@@ -123,7 +137,7 @@ const Header = () => {
           </div>
           <div className="headerMenu">
             <div className="headerIR headerLine">
-              <span>Nursense 소개</span>
+              <span onClick={goToCustomer}>Nursense 소개</span>
             </div>
             <div className="headerCurr headerLine">
               <span onClick={goToCurr}>교육과정</span>
@@ -132,7 +146,7 @@ const Header = () => {
               <span onClick={goToDownload}>다운로드</span>
             </div>
             <div className="headerContact">
-              <span>고객센터</span>
+              <span onClick={goToCustomer}>고객센터</span>
             </div>
           </div>
           <div className="mainLoginWrapper">
@@ -151,6 +165,7 @@ const Header = () => {
           </div>
         </div>
       </div>
+      {isReadyModalOpen && <ReadyModal onClose={closeReadyModal} />}
     </>
   );
 };

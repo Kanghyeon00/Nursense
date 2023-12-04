@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Footer.css";
+import Policy from "./Policy";
 
 const Footer = () => {
+
+  const [isPolicyModalOpen, setIsPolicyModalOpen] = useState(false);
 
   const openDM = () => {
     window.location.href = 'http://www.wmscompany.co.kr'
@@ -19,7 +22,14 @@ const Footer = () => {
     window.location.href = 'https://www.youtube.com/@user-fy4yn4yk2c'
   };
 
-  
+  const openPolicyModal = () => {
+    setIsPolicyModalOpen(true);
+  };
+
+  const closePolicyModal = () => {
+    setIsPolicyModalOpen(false);
+  };
+
   return (
     <>
       <div className="footerContainer">
@@ -60,11 +70,12 @@ const Footer = () => {
             </div>
             <div className="footerCopy">
               <p>Copyrightⓒ2023 DoubleM All rights reserved.</p>
-              <span>이용약관</span>
-              <span>개인정보처리방침</span>
+              <span onClick={openPolicyModal}>이용약관</span>
+              <span onClick={openPolicyModal}>개인정보처리방침</span>
             </div>
         </div>
       </div>
+      {isPolicyModalOpen && <Policy onClose={closePolicyModal} />}
     </>
   );
 };

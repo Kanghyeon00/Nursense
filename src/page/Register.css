@@ -51,6 +51,19 @@
   border: none;
 }
 
+.termsTextWrapper span:nth-child(1),
+.termsTextWrapper span:nth-child(3) {
+  text-decoration: underline;
+}
+
+.termsTextWrapper span:nth-child(1):hover {
+  cursor: pointer;
+}
+
+.termsTextWrapper span:nth-child(3):hover {
+  cursor: pointer;
+}
+
 .registrationForm .termsBox {
   margin-left: 0;
   cursor: pointer;
@@ -104,8 +117,8 @@
 }
 
 .formError {
-    color: #E94439;
-    font-weight: 400;
-    margin-top: 10px;
-    font-size: 0.9rem;
+  color: #e94439;
+  font-weight: 400;
+  margin-top: 10px;
+  font-size: 0.9rem;
 }

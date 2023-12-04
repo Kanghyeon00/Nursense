@@ -17,7 +17,7 @@ const Slide = () => {
 
   return (
     <>
-      <div className="slideContainer">
+      <div className="slideContainer" >
         <div className="slideWrapper">
         <Slider {...settings}>
         <div>

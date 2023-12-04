@@ -6,10 +6,11 @@ import TermsModal from "../components/TermsModal";
 import { useNavigate } from "react-router-dom";
 import SuccessModal from "../components/SuccessModal";
 import LoginFooter from "../components/LoginFooter";
+import Policy from "../components/Policy";
 
 const Register = () => {
   const navigate = useNavigate();
-
+  const [isPolicyModalOpen, setIsPolicyModalOpen] = useState(false);
   const goToHome = () => {
     navigate("/");
   };
@@ -171,6 +172,15 @@ const Register = () => {
     }
   }
 
+  const openPolicyModal = () => {
+    setIsPolicyModalOpen(true);
+  };
+
+  const closePolicyModal = () => {
+    setIsPolicyModalOpen(false);
+  };
+
+
   return (
     <>
       <div className="registerContainer">
@@ -309,9 +319,9 @@ const Register = () => {
                   />
                 </div>
                 <div className="termsTextWrapper">
-                  <span>서비스 이용약관</span>
+                  <span onClick={openPolicyModal}>서비스 이용약관</span>
                   <span> 및 </span>
-                  <span>개인정보 취급방침</span>
+                  <span onClick={openPolicyModal}>개인정보 취급방침</span>
                   <span>을 </span>
                   <span>확인</span>
                   <span>하였고, 이에</span>
@@ -336,6 +346,7 @@ const Register = () => {
         </div>
         <LoginFooter />
       </div>
+      {isPolicyModalOpen && <Policy onClose={closePolicyModal} />}
     </>
   );
 };
