@@ -1,9 +1,18 @@
-import React from 'react'
+import React from "react";
+import "./Customer.css";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 
 const Customer = () => {
   return (
-    <div className='customerContainer'>준비중입니다.</div>
-  )
-}
+    <>
+      <Header />
+      <div className="customerContainer">
+        <p>준비중입니다</p>
+      </div>
+      <Footer />
+    </>
+  );
+};
 
-export default Customer
+export default Customer;
