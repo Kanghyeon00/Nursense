@@ -15,6 +15,7 @@ import CurrEvaluation from './page/CurrEvaluation';
 import Guide from './page/Guide';
 import CurrLearning from './page/CurrLearning';
 import Customer from './page/Customer';
+import Download from './page/Download';
 
 
 function App() {
@@ -44,6 +45,7 @@ function App() {
         <Route path="/curriculum/guide" element={<Guide />} />
         <Route path="/curriculum/learning" element={<CurrLearning />} />
         <Route path="/customer" element={<Customer />} />
+        <Route path="/download" element={<Download />} />
         </Routes>
       </div>
     </Provider>

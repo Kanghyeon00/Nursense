@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
-import './Header.css';
+import "./Header.css";
 import Cookies from "universal-cookie";
 import { loginSuccess } from "../actions";
 import { getUserDataFromCookie } from "./cookies";
@@ -25,27 +25,29 @@ const Header = () => {
   };
 
   const goToMyPage = () => {
-    navigate('/mypage');
+    navigate("/mypage");
   };
 
   const goToHome = () => {
-    navigate('/');
+    navigate("/");
   };
 
   const goToCurr = () => {
-    navigate('/curriculum/learn'); // '/target-page'로 이동
+    navigate("/curriculum/learn"); // '/target-page'로 이동
   };
 
   const goToLogin = () => {
-    navigate('/login');
+    navigate("/login");
   };
 
   const goToCustomer = () => {
-    navigate('/customer');
+    navigate("/customer");
   };
 
-  const goToDownload = () => {
-    window.location.href = 'https://www.dropbox.com/scl/fi/bst2tebaaac59vcdpzrdc/NursenseLauncher.exe?rlkey=8n0ha01f19jsolxmdi8bmwogu&dl=1';
+  const goToDw = () => {
+    navigate("/download");
+    window.location.href =
+      "https://www.dropbox.com/scl/fi/bst2tebaaac59vcdpzrdc/NursenseLauncher.exe?rlkey=8n0ha01f19jsolxmdi8bmwogu&dl=1";
   };
 
   const removeCookies = () => {
@@ -58,15 +60,24 @@ const Header = () => {
 
   const fetchUserData = async () => {
     try {
-      if (isAuthenticated && user && user.id && user.token && user.refreshToken) {
-        const response = await axios.get(`https://www.neusenseback.com/api/get/nursense/increase/${user.id}`, {
-          headers: {
-            Authorization: `Bearer ${user.token}`,
-            "x-refresh-token": user.refreshToken,
-          },
-        });
+      if (
+        isAuthenticated &&
+        user &&
+        user.id &&
+        user.token &&
+        user.refreshToken
+      ) {
+        const response = await axios.get(
+          `https://www.neusenseback.com/api/get/nursense/increase/${user.id}`,
+          {
+            headers: {
+              Authorization: `Bearer ${user.token}`,
+              "x-refresh-token": user.refreshToken,
+            },
+          }
+        );
         if (response.status === 200 && response.data.success) {
-          dispatch({ type: 'SET_USER_DATA', payload: response.data.response });
+          dispatch({ type: "SET_USER_DATA", payload: response.data.response });
         } else {
           console.error("데이터를 불러오는 데 실패했습니다.");
         }
@@ -92,7 +103,7 @@ const Header = () => {
       // 서버 응답에 따라 클라이언트에서 처리
       if (response.status === 200 && response.data.success) {
         // 로그인 페이지로 이동
-        navigate('/login');
+        navigate("/login");
       } else {
         // 로그아웃 실패 처리
         console.error("로그아웃 실패");
@@ -110,7 +121,10 @@ const Header = () => {
 
   useEffect(() => {
     // 최초 렌더링 시 또는 user가 변경될 때만 fetchData 호출
-    if (!user || (isAuthenticated && user.id && user.token && user.refreshToken)) {
+    if (
+      !user ||
+      (isAuthenticated && user.id && user.token && user.refreshToken)
+    ) {
       fetchUserData();
     }
   }, [dispatch, isAuthenticated, user]);
@@ -119,7 +133,7 @@ const Header = () => {
   useEffect(() => {
     const userDataFromCookie = getUserDataFromCookie();
     if (userDataFromCookie) {
-      dispatch({ type: 'SET_USER_DATA', payload: userDataFromCookie });
+      dispatch({ type: "SET_USER_DATA", payload: userDataFromCookie });
     }
   }, [dispatch]);
 
@@ -143,7 +157,7 @@ const Header = () => {
               <span onClick={goToCurr}>교육과정</span>
             </div>
             <div className="headerDownLoad headerLine">
-              <span onClick={goToDownload}>다운로드</span>
+              <span onClick={goToDw}>다운로드</span>
             </div>
             <div className="headerContact">
               <span onClick={goToCustomer}>고객센터</span>
@@ -155,12 +169,18 @@ const Header = () => {
                 <div className="loggedHeaderWrapper">
                   <span className="headerUserName">{`${user.name}`}</span>
                   <span> 님 </span>
-                  <span className="headerMyPageText" onClick={goToMyPage} >마이페이지</span>
-                  <span className="headerLogOutText" onClick={handleLogout}>로그아웃</span>
+                  <span className="headerMyPageText" onClick={goToMyPage}>
+                    마이페이지
+                  </span>
+                  <span className="headerLogOutText" onClick={handleLogout}>
+                    로그아웃
+                  </span>
                 </div>
               </>
             ) : (
-              <span className="loginText" onClick={goToLogin}>로그인</span>
+              <span className="loginText" onClick={goToLogin}>
+                로그인
+              </span>
             )}
           </div>
         </div>
