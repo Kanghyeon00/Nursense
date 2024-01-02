@@ -27,6 +27,7 @@ const MyPage = () => {
   const handleModalClose = () => {
     setModalVisible(false);
   };
+  
 
   const handleChangePwClick = () => {
     setChangePwModalVisible(true);

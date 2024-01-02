@@ -6,31 +6,31 @@ const ContentSlide = () => {
     const contentData = [
         {
             title: "욕창 임상실습",
-            description: "욕창 관리부터 치료까지 메타버스로\n 진행하는예비 의료 실습",
+            description: "욕창 관리부터 치료까지 메타버스로\n 진행하는 예비 임상실습",
             buttonText: "학습하기",
             imageUrl: `${process.env.PUBLIC_URL}/img/bedsore.png`,
           },
         {
             title: "당뇨 임상실습",
-            description: "욕창 관리부터 치료까지 메타버스로\n 진행하는예비 의료 실습",
+            description: "욕창 관리부터 치료까지 메타버스로\n 진행하는 예비 임상실습",
             buttonText: "학습하기",
             imageUrl: `${process.env.PUBLIC_URL}/img/diabetes.png`,
           },
           {
             title: "단순도뇨 임상실습",
-            description: "욕창 관리부터 치료까지 메타버스로\n 진행하는예비 의료 실습",
+            description: "욕창 관리부터 치료까지 메타버스로\n 진행하는 예비 임상실습",
             buttonText: "학습하기",
             imageUrl: `${process.env.PUBLIC_URL}/img/nelaton.png`,
           },
           {
             title: "유치도뇨 임상실습",
-            description: "욕창 관리부터 치료까지 메타버스로\n 진행하는예비 의료 실습",
+            description: "욕창 관리부터 치료까지 메타버스로\n 진행하는 예비 임상실습",
             buttonText: "학습하기",
             imageUrl: `${process.env.PUBLIC_URL}/img/foley.png`,
           },
           {
             title: "근육주사 임상실습",
-            description: "욕창 관리부터 치료까지 메타버스로\n 진행하는예비 의료 실습",
+            description: "욕창 관리부터 치료까지 메타버스로\n 진행하는 예비 임상실습",
             buttonText: "학습하기",
             imageUrl: `${process.env.PUBLIC_URL}/img/intramuscular.png`,
           },
