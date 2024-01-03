@@ -34,6 +34,9 @@
     margin-bottom: 2%;
     border-radius: 5px;
     outline: none;
+    font-size: 1.1rem;
+    font-family: 'Pretendard';
+    color: #078675;
 }
 
 .contactWrapper textarea {
@@ -45,6 +48,9 @@
     margin-top: 2%;
     outline: none;
     resize: none;
+    font-size: 1.1rem;
+    font-family: 'Pretendard';
+    color: #078675;
 }
 
 .contactSubmit {
