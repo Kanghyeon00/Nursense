@@ -40,6 +40,10 @@ const Header = () => {
     navigate("/login");
   };
 
+  const goToAbout = () => {
+    navigate("/about");
+  };
+
   const goToCustomer = () => {
     navigate("/customer");
   };
@@ -151,7 +155,7 @@ const Header = () => {
           </div>
           <div className="headerMenu">
             <div className="headerIR headerLine">
-              <span onClick={goToCustomer}>Nursense 소개</span>
+              <span onClick={goToAbout}>Nursense 소개</span>
             </div>
             <div className="headerCurr headerLine">
               <span onClick={goToCurr}>교육과정</span>

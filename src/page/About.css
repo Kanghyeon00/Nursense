@@ -1,0 +1,41 @@
+.aboutWrapper {
+    background-image: url('../bg/aboutBG.jpg');
+    width: 100%;
+    height: 100vh;
+    margin-top: 2%;
+}
+
+.aboutTextWrapper {
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 60vh;
+    animation: slideUp 1.5s ease-in-out forwards;
+}
+
+.aboutTextWrapper h1 {
+    font-size: 5rem;
+    margin-bottom: 20px;
+}
+
+.aboutDownload {
+    background: #fff;
+    border: 1px solid #078675;
+    color: #078675;
+    width: 20%;
+    height: 6vh;
+    font-size: 1.2rem;
+    font-weight: bold;
+    font-family: 'Pretendard';
+    transition: 0.3s;
+    margin-top: 2%;
+}
+
+.aboutDownload:hover {
+    cursor: pointer;
+    background-color: #078675;
+    color: #fff;
+}

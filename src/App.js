@@ -16,6 +16,8 @@ import Guide from './page/Guide';
 import CurrLearning from './page/CurrLearning';
 import Customer from './page/Customer';
 import Download from './page/Download';
+import Introduce from './page/About';
+import About from './page/About';
 
 
 function App() {
@@ -46,6 +48,7 @@ function App() {
         <Route path="/curriculum/learning" element={<CurrLearning />} />
         <Route path="/customer" element={<Customer />} />
         <Route path="/download" element={<Download />} />
+        <Route path="/about" element={<About />} />
         </Routes>
       </div>
     </Provider>
