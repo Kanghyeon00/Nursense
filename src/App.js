@@ -18,6 +18,7 @@ import Customer from './page/Customer';
 import Download from './page/Download';
 import Introduce from './page/About';
 import About from './page/About';
+import NurseMind from './page/NurseMind';
 
 
 function App() {
@@ -49,6 +50,7 @@ function App() {
         <Route path="/customer" element={<Customer />} />
         <Route path="/download" element={<Download />} />
         <Route path="/about" element={<About />} />
+        <Route path="/nursemind" element={<NurseMind />} />
         </Routes>
       </div>
     </Provider>

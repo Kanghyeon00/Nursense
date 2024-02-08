@@ -1,0 +1,35 @@
+.aiWrapper {
+    width: 100%;
+    height: 100vh;
+    text-align: center;
+    margin-top: 5%;
+}
+
+.aiWrapper li {
+    list-style: none;
+}
+
+.aiWrapper input {
+    border-radius: 20px;
+    border: 2px solid #078675;
+    width: 50%;
+    height: 6vh;
+    color: #078675;
+    padding-left: 20px;
+}
+
+.aiWrapper input::placeholder {
+    color: #078675;
+    font-weight: 700;
+    font-size: 1rem;
+}
+
+.aiSendButton {
+    width: 10%;
+    height: 6vh;
+    background: none;
+    border: 2px solid #078675;
+    color: #078675;
+    font-size: 1.2rem;
+    margin-left: 3%;
+}
