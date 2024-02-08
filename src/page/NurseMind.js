@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import './NurseMind.css';
 import Header from "../components/Header";
+import Footer from "../components/Footer";
 
 const NurseMind = () => {
   const [messages, setMessages] = useState([]);
@@ -75,6 +76,7 @@ const NurseMind = () => {
         )}
       </ul>
       </div>
+      <Footer />
     </div>
   );
 };
