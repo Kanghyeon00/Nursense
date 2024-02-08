@@ -36,7 +36,7 @@ const NurseMind = () => {
 
       const data = await response.json();
       const aiMessage = {
-        user: "널스멘토",
+        user: "널스 멘토",
         text: data.response,
       };
 
@@ -59,7 +59,7 @@ const NurseMind = () => {
           type="text"
           value={userInput}
           onChange={(e) => setUserInput(e.target.value)}
-          placeholder="널스멘토에게 질문 해보세요!"
+          placeholder="널스 멘토에게 질문 해보세요!"
         />
         <button className="aiSendButton" type="submit">Send</button>
       </form>
