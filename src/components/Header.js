@@ -48,6 +48,10 @@ const Header = () => {
     navigate("/customer");
   };
 
+  const goToAi = () => {
+    navigate("/nursemind");
+  };
+
   const goToDw = () => {
     navigate("/download");
     window.location.href =
@@ -165,6 +169,9 @@ const Header = () => {
             </div>
             <div className="headerContact">
               <span onClick={goToCustomer}>고객센터</span>
+            </div>
+            <div className="headerContact">
+              <span onClick={goToAi}>널스마인드</span>
             </div>
           </div>
           <div className="mainLoginWrapper">

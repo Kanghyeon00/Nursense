@@ -4,7 +4,7 @@
     justify-content: space-around;
     align-items: center;
     box-shadow: 3px 3px 10px 3px rgba(0, 0, 0, 0.1);
-    width: 70vw;
+    width: 70%;
     height: 6vh;
     border-radius: 25px;
     margin: auto;
@@ -63,4 +63,8 @@
 
 .loggedHeaderWrapper span:nth-child(4):hover {
     cursor: pointer;
+}
+
+.headerContact {
+    border-right: 2px solid #E6E6E6;
 }
