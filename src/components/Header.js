@@ -168,10 +168,10 @@ const Header = () => {
               <span onClick={goToDw}>다운로드</span>
             </div>
             <div className="headerContact">
-              <span onClick={goToCustomer}>고객센터</span>
+              <span onClick={goToAi}>널스마인드</span>
             </div>
             <div className="headerContact">
-              <span onClick={goToAi}>널스마인드</span>
+              <span onClick={goToCustomer}>고객센터</span>
             </div>
           </div>
           <div className="mainLoginWrapper">
