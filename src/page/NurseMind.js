@@ -36,7 +36,7 @@ const NurseMind = () => {
 
       const data = await response.json();
       const aiMessage = {
-        user: "널스마인드",
+        user: "널스멘토",
         text: data.response,
       };
 
