@@ -15,7 +15,7 @@
 .currNameBar {
     width: 84.4vw;
     height: 10vh;
-    background: linear-gradient(to right, #212880 , #4A227B);
+    background: linear-gradient(to right, #078675 , rgb(20, 73, 51));
     color: #fff;
     display: flex;
     align-items: center;
@@ -37,7 +37,7 @@
 }
 
 .currLearnButtonWrapper button {
-    background-color: #3941A2;
+    background-color: #078675;
     border: none;
     padding: 1rem 2rem;
     color: #fff;
@@ -56,7 +56,7 @@
 }
 
 .currLearnTitle span {
-    color: #3941A2;
+    color: #078675;
 }
 
 .currLearnTitle span:nth-child(1) {
@@ -77,7 +77,7 @@
 
 .currNavWrapper h2 {
     font-size: 2rem;
-    color: #3941A2;
+    color: #078675;
     text-align: center;
 }
 
@@ -101,11 +101,11 @@
 
 .currNavWrapper li:hover {
     cursor: pointer;
-    color: #3941A2;
+    color: #078675;
 }
 
 .learnPageText {
-    color: #3941A2; /* 또는 원하는 색상 */
+    color: #078675; /* 또는 원하는 색상 */
   }
   
   .normalText {
