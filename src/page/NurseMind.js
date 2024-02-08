@@ -59,7 +59,7 @@ const NurseMind = () => {
           type="text"
           value={userInput}
           onChange={(e) => setUserInput(e.target.value)}
-          placeholder="널스마인드에게 질문 해보세요!"
+          placeholder="널스멘토에게 질문 해보세요!"
         />
         <button className="aiSendButton" type="submit">Send</button>
       </form>
@@ -71,7 +71,7 @@ const NurseMind = () => {
         ))}
         {isTyping && (
           <li>
-            <strong>널스마인드:</strong> 입력중...
+            <strong>널스 멘토:</strong> 입력중...
           </li>
         )}
       </ul>
