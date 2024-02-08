@@ -37,7 +37,7 @@
 
 .currLearningTitle span:nth-child(1) {
     font-size: 1.3rem;
-    color: #3941A2;
+    color: #078675;
     margin-right: 4%;
     font-weight: bold;
 }
@@ -79,15 +79,15 @@
 }
 
 .currLearningBottom2 span:nth-child(2) {
-    color: #3941A2;
+    color: #078675;
 }
 
 .currLearningBottom2 span:nth-child(5) {
-    color: #3941A2;
+    color: #078675;
 }
 
 .currLearningBottom2 span:nth-child(8) {
-    color: #3941A2;
+    color: #078675;
 }
 
 .forBottom {

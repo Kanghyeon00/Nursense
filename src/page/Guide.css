@@ -8,7 +8,7 @@
 .currNameBar2 {
     width: 84.4vw;
     height: 10vh;
-    background: linear-gradient(to right, #212880 , #4A227B);
+    background: linear-gradient(to right, #078675 , rgb(20, 73, 51));
     color: #fff;
     display: flex;
     align-items: center;
