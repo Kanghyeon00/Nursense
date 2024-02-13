@@ -13,7 +13,7 @@ const NurseMind = () => {
     if (!userInput.trim()) return;
 
     const userMessage = {
-      user: "강석현",
+      user: "나",
       text: userInput,
     };
 
