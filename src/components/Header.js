@@ -164,9 +164,11 @@ const Header = () => {
             <div className="headerCurr headerLine">
               <span onClick={goToCurr}>교육과정</span>
             </div>
-            <div className="headerDownLoad headerLine">
-              <span onClick={goToDw}>다운로드</span>
-            </div>
+            {isAuthenticated && (
+              <div className="headerDownLoad headerLine">
+                <span onClick={goToDw}>다운로드</span>
+              </div>
+            )}
             <div className="headerContact">
               <span onClick={goToAi}>널스 멘토</span>
             </div>
