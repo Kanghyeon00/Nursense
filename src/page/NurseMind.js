@@ -56,7 +56,6 @@ const NurseMind = () => {
     <div className="aiContainer">
         <Header />
         <div className="aiWrapper">
-        <div className="scrollContainer">
           <div className="nurseMentoTitle">
             <span>NurseMento</span>
           </div>
@@ -90,7 +89,6 @@ const NurseMind = () => {
     <button className="aiSendButton" type="submit">Send</button>
   </form>
 </div>
-      </div>
       </div>
       <Footer />
     </div>
