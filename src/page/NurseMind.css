@@ -1,35 +1,68 @@
 .aiWrapper {
-    width: 100%;
-    height: 100vh;
-    text-align: center;
-    margin-top: 5%;
+  width: 30%;
+  height: 75vh;
+  margin: auto;
+  border: 2px solid #078675;
+  border-radius: 30px;
+  margin-top: 3%;
+  overflow: scroll;
+  overflow-x: hidden;
 }
 
-.aiWrapper li {
+.nurseMentoTitle {
+  margin-top: 5%;
+  text-align: center;
+}
+
+.nurseMentoTitle span {
+  color: #078675;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.userMessageWrapper,
+.aiMessageWrapper {
     list-style: none;
 }
 
-.aiWrapper input {
-    border-radius: 20px;
-    border: 2px solid #078675;
-    width: 50%;
-    height: 6vh;
-    color: #078675;
-    padding-left: 20px;
+.userMessageWrapper li {
+    width: 90%;
 }
 
-.aiWrapper input::placeholder {
-    color: #078675;
-    font-weight: 700;
-    font-size: 1rem;
+.userMessageWrapper p {
+    width: 70%;
+    height: 7vh;
+    background-color: #078675;
+    color: #fff;
+    border-radius: 10px;
+    padding: 0 5%;
+    display: flex;
+    align-items: center;
+    justify-content: right;
 }
 
-.aiSendButton {
-    width: 10%;
-    height: 6vh;
-    background: none;
-    border: 2px solid #078675;
+.aiMessageWrapper li {
+    width: 90%;
+
+}
+
+.aiMessageWrapper p {
     color: #078675;
-    font-size: 1.2rem;
-    margin-left: 3%;
+    border: 2px solid #078675;
+    width: 70%;
+    height: 7vh;
+    border-radius: 10px;
+    padding: 0 5%;
+    display: flex;
+    align-items: center;
+
+}
+
+.mentoInputWrapper {
+    width: 90%;
+}
+
+.questionInput {
+    width: 100%;
+    height: 5vh;
 }
