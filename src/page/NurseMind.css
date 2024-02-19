@@ -9,7 +9,7 @@
 .messageWrapper {
     overflow: scroll;
     overflow-x: hidden;
-    height: 57vh;
+    height: 58vh;
 }
 
 .messageWrapper::-webkit-scrollbar {
