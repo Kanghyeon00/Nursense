@@ -83,15 +83,11 @@
     position: relative;
     border-top: 1px solid #078675;
     margin: auto;
-    padding: 5% 0;
-    display: flex;
-    justify-content: center; /* 수평 가운데 정렬을 위해 추가 */
-    align-items: center; /* 수직 가운데 정렬을 위해 추가 */
+    padding-top: 3%;
 }
 
 .mentoInputWrapper form {
     position: sticky; /* form을 상대적으로 배치하기 위해 */
-    bottom: 0; /* 아래쪽으로부터의 거리를 0으로 설정 */
     width: 100%; /* 부모 요소에 맞게 너비를 설정 */
     text-align: center; /* 폼을 수평 가운데 정렬하기 위해 */
 }
