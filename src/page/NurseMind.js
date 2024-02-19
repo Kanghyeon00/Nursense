@@ -56,6 +56,7 @@ const NurseMind = () => {
     <div className="aiContainer">
         <Header />
         <div className="aiWrapper">
+        <div className="scrollContainer">
           <div className="nurseMentoTitle">
             <span>NurseMento</span>
           </div>
@@ -78,16 +79,17 @@ const NurseMind = () => {
       </ul>
       </div>
       <div className="mentoInputWrapper">
-      <form onSubmit={sendMessage}>
-        <input
-        className="questionInput"
-          type="text"
-          value={userInput}
-          onChange={(e) => setUserInput(e.target.value)}
-          placeholder="널스 멘토에게 질문 해보세요!"
-        />
-        <button className="aiSendButton" type="submit">Send</button>
-      </form>
+  <form onSubmit={sendMessage}>
+    <input
+      className="questionInput"
+      type="text"
+      value={userInput}
+      onChange={(e) => setUserInput(e.target.value)}
+      placeholder="널스 멘토에게 질문 해보세요!"
+    />
+    <button className="aiSendButton" type="submit">Send</button>
+  </form>
+</div>
       </div>
       </div>
       <Footer />
