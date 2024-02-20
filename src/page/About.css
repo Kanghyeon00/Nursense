@@ -1,0 +1,11 @@
+.aboutWrapper span {
+    font-size: 3rem;
+}
+
+.aboutWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 40vh;
+}

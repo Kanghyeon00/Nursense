@@ -14,7 +14,7 @@ const About = () => {
         <div className='aboutContainer'>
           <Header />
             <div className='aboutWrapper'>
-              
+              <span>준비중 입니다.</span>
             </div>
             <Footer />
         </div>
