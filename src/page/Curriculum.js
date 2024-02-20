@@ -63,8 +63,6 @@ const Curriculum = () => {
       <div className="currContainer">
         <Header />
         <div className="currWrapper">
-          <div className="currNavWrapper">
-          </div>
           <div className="currInfoWrapper">
             <div className="currNameBar">
               <span>사전학습</span>
