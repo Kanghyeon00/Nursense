@@ -162,7 +162,7 @@ const Header = () => {
               <span onClick={goToAbout}>Nursense 소개</span>
             </div>
             <div className="headerCurr headerLine">
-              <span onClick={goToCurr}>교육과정</span>
+              <span onClick={goToCurr}>사전학습</span>
             </div>
             {isAuthenticated && (
               <div className="headerDownLoad headerLine">
