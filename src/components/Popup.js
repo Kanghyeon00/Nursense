@@ -44,7 +44,7 @@ const Popup = () => {
                 <span>24시간동안 다시 보지 않기</span>
               </div>
               <div className='popupXButton' onClick={handleClosePopup}>
-                <img src={`${process.env.PUBLIC_URL}/img/popupXbutton.png`} alt='img'/>
+                <img src={`${process.env.PUBLIC_URL}/img/popupXButton.png`} alt='img'/>
               </div>
             </div>
           </div>
