@@ -1,0 +1,50 @@
+.popupContainer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* 반투명한 배경을 위한 배경 색 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .popupWrapper {
+    background-color: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* 그림자 효과 */
+    max-width: 30%; /* 모달의 최대 너비 */
+    max-height: 80%; /* 모달의 최대 높이 */
+    overflow: auto; /* 내용이 넘칠 경우 스크롤 가능하도록 */
+    text-align: center;
+  }
+
+  .popupTitle span {
+    color: #078675;
+    font-size: 2.3rem;
+    font-weight: bold;
+  }
+
+  .popupImgWrapper img {
+    width: 100%;
+  }
+
+  .popupBottomWrapper {
+    display: flex;
+    justify-content: space-between;
+
+  }
+
+  .hourWrapper {
+    margin-left: 2%;
+  }
+
+  .popupXButton {
+    margin-right: 3%;
+  }
+
+  .popupXButton img:hover {
+    cursor: pointer;
+  }
