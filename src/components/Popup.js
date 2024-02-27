@@ -16,8 +16,15 @@ const Popup = () => {
   }, []);
 
   const handleClosePopup = () => {
-    localStorage.setItem('isPopupClosed', new Date().getTime().toString());
     setShowPopup(false);
+  };
+
+  const handleCheck = (e) => {
+    if (e.target.checked) {
+      localStorage.setItem('isPopupClosed', new Date().getTime().toString());
+    } else {
+      localStorage.removeItem('isPopupClosed');
+    }
   };
 
   return (
@@ -33,7 +40,7 @@ const Popup = () => {
             </div>
             <div className='popupBottomWrapper'>
               <div className='hourWrapper'>
-                <input type='checkbox' />
+                <input type='checkbox' onChange={handleCheck} />
                 <span>24시간동안 다시 보지 않기</span>
               </div>
               <div className='popupXButton' onClick={handleClosePopup}>
