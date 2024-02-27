@@ -13,7 +13,7 @@
   .popupWrapper {
     background-color: white;
     border-radius: 8px;
-    padding: 30px 20px;
+    padding: 40px 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* 그림자 효과 */
     max-width: 30%; /* 모달의 최대 너비 */
     max-height: 100%; /* 모달의 최대 높이 */
@@ -28,7 +28,7 @@
   }
 
   .popupTitle {
-    margin-bottom: 5%;
+    margin-bottom: 4%;
   }
 
   .popupImgWrapper img {
@@ -55,4 +55,6 @@
 
   .popupBottomWrapper {
     margin-top: 4%;
+    display: flex;
+    text-align: center;
   }
