@@ -7,6 +7,7 @@ const ContentSlide = () => {
 
   const openLuncher = () => {
     const launcherURL = `doublemlauncher://nursenselauncher?1?${userData.id}`; // 쿠키에서 가져온 사용자 ID 사용
+    console.log({ launcherURL });
     window.location.href = launcherURL;
   };
 
