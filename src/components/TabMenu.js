@@ -129,12 +129,12 @@ const TabMenu = () => {
       }
     };
     
-
     fetchData();
   }, [userId, token, refreshToken]);
   
   const openLuncher = () => {
-    window.location.href = 'doublemlauncher://nursenselauncher';
+    const launcherURL = `doublemlauncher://nursenselauncher?1?${userId}`;
+    window.location.href = launcherURL;
   };
 
   return (
