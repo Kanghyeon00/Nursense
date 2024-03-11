@@ -6,7 +6,7 @@ const ContentSlide = () => {
   const userData = getUserDataFromCookie(); // 쿠키에서 사용자 데이터 가져오기
 
   const openLuncher = () => {
-    const launcherURL = `doublemlauncher://nursenselauncher?2?${userData.id}`; // 쿠키에서 가져온 사용자 ID 사용
+    const launcherURL = `doublemlauncher://nursenselauncher?1?${userData.id}`; // 쿠키에서 가져온 사용자 ID 사용
     console.log({ launcherURL });
     window.location.href = launcherURL;
   };
