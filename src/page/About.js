@@ -19,7 +19,7 @@ const About = () => {
   return (
     <>
         <div className='aboutContainer'>
-          <Header />
+          <Header onLanguageChange={handleLanguageChange} />
             <div className='aboutWrapper'>
               <span>{" "}
               {selectedLanguage === "ko" ? "준비중 입니다." : "Coming Soon"}</span>
