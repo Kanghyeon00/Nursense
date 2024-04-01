@@ -161,7 +161,7 @@ const Header = ({ onLanguageChange }) => {
     <>
       <div className="headerContainer">
         <div className="languageWrapper">
-          <span onClick={toggleLanguageMenu}>Language</span>
+          <span className="languageText" onClick={toggleLanguageMenu}>Language</span>
           {isLanguageMenuOpen && (
             <div className="languageMenu">
               <div
@@ -173,7 +173,7 @@ const Header = ({ onLanguageChange }) => {
                   alt="img"
                 />
               </div>
-              <div>
+              <div className="usaWrapper">
                 <div onClick={() => handleLanguageChange("en")}>
                   <img
                     src={`${process.env.PUBLIC_URL}/img/usa.png`}
