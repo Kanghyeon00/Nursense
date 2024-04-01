@@ -4,6 +4,7 @@ import axios from 'axios';
 import TermsModal from './TermsModal';
 import SuccessModal from './SuccessModal';
 import CheckModal from './CheckModal';
+import { useLanguage } from "../LanguageContext";
 
 const FindPw = ({ closeModal }) => {
   const [id, setId] = useState('');
@@ -11,6 +12,12 @@ const FindPw = ({ closeModal }) => {
   const [message, setMessage] = useState('');
   const [showCheckModal, setShowCheckModal] = useState(false);
   const [showTermsModal, setShowTermsModal] = useState(false);
+
+  const { selectedLanguage, changeLanguage } = useLanguage();
+  
+  const handleLanguageChange = (newLanguage) => {
+    changeLanguage(newLanguage); // 언어 변경 함수 호출
+  };
 
   const handleFindPw = async () => {
     try {
@@ -39,12 +46,14 @@ const FindPw = ({ closeModal }) => {
 
   const renderModal = () => {
     if (showCheckModal) {
-      return <CheckModal closeModal={handleCloseModal} checkMessage={"작성된 이메일로 비밀번호를 발송 하였습니다."} />;
+      return <CheckModal closeModal={handleCloseModal} checkMessage={
+        selectedLanguage === "ko" ? "작성된 이메일로 임시 비밀번호를 발송하였습니다." : "An email with a temporary password has been sent to the provided email address."} />;
     } else if (showTermsModal) {
       return (
         <TermsModal
           closeTermsModal={() => setShowTermsModal(false)}
-          message={"일치하는 정보가 없습니다."}
+          message={
+            selectedLanguage === "ko" ? "일치하는 정보가 없습니다." : "No matching information found."}
         />
       );
     }
@@ -56,7 +65,8 @@ const FindPw = ({ closeModal }) => {
       <div className="findPwContainer">
         <div className="findPwWrapper">
           <div className="findPwTitle">
-            <span>아이디 찾기</span>
+            <span>{" "}
+              {selectedLanguage === "ko" ? "비밀번호 찾기" : "Find Password"}</span>
             <img
               src={`${process.env.PUBLIC_URL}/img/closeButton.png`}
               alt="모달 닫기"
@@ -64,23 +74,28 @@ const FindPw = ({ closeModal }) => {
             />
           </div>
           <div className="findPwMain">
-            <p>아이디를 입력해주세요</p>
+            <p>{" "}
+              {selectedLanguage === "ko" ? "아이디를 입력해주세요" : "Please enter your username."}</p>
             <input
               type="text"
-              placeholder="아이디 입력"
+              placeholder={
+                selectedLanguage === "ko" ? "아이디 입력" : "Enter your ID"}
               value={id}
               onChange={(e) => setId(e.target.value)}
             />
-            <p>회원가입 당시 사용한 이메일 주소를 입력해 주세요.</p>
+            <p>{" "}
+              {selectedLanguage === "ko" ? "회원가입 당시 사용한 이메일 주소를 입력해 주세요." : "Please enter the email address you used during registration."}</p>
                         <input
               type="email"
-              placeholder="이메일 입력"
+              placeholder={
+                selectedLanguage === "ko" ? "이메일 입력" : "Enter your E-mail"}
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
           </div>
           <div className="findPwButton">
-            <button onClick={handleFindPw}>확인</button>
+            <button onClick={handleFindPw}>{" "}
+              {selectedLanguage === "ko" ? "확인" : "Confirm"}</button>
           </div>
         </div>
       </div>

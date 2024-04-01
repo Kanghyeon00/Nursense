@@ -1,9 +1,11 @@
 import React from "react";
 import "./ContentSlide.css";
 import { getUserDataFromCookie } from "./cookies"; // cookies.js 파일에서 필요한 함수 가져오기
+import { useLanguage } from "../LanguageContext";
 
 const ContentSlide = () => {
   const userData = getUserDataFromCookie(); // 쿠키에서 사용자 데이터 가져오기
+  const { selectedLanguage, changeLanguage } = useLanguage();
 
   const openLuncher = () => {
     const launcherURL = `doublemlauncher://nursenselauncher?1?${userData.id}`; // 쿠키에서 가져온 사용자 ID 사용
@@ -11,47 +13,120 @@ const ContentSlide = () => {
     window.location.href = launcherURL;
   };
 
+  const translateText = (key) => {
+    // 선택된 언어에 따라 다른 번역을 반환합니다.
+    switch (selectedLanguage) {
+      case "ko":
+        // 한국어 번역
+        switch (key) {
+          case "bedsore":
+            return "욕창 임상실습";
+          case "bedsoreDescription":
+            return "욕창 관리부터 치료까지 메타버스로 진행하는 예비 임상실습";
+          case "diabetes":
+            return "당뇨 임상실습";
+          case "diabetesDescription":
+            return "당뇨 관리부터 치료까지 메타버스로 진행하는 예비 임상실습";
+            case "simpleUrinaryTractInfection":
+              return "단순도뇨 임상실습";
+            case "simpleUrinaryTractInfectionDescription":
+              return "단순도뇨 관리부터 치료까지 메타버스로 진행하는 예비 임상실습";
+              case "urinaryIncontinence":
+                return "유치도뇨 임상실습";
+              case "urinaryIncontinenceDescription":
+                return "유치도뇨 관리부터 치료까지 메타버스로 진행하는 예비 임상실습";
+                case "intramuscularInjectionClinicalPractice":
+                  return "근육주사임상실습";
+                  case "intramuscularInjectionClinicalPracticeDescription":
+                    return "근육주사, 메타버스로 진행하는 예비 임상실습";
+            case "learn":
+              return "학습하기";
+          // 다른 항목들에 대한 번역도 추가합니다.
+          default:
+            return "";
+        }
+      case "en":
+        // 영어 번역
+        switch (key) {
+          case "bedsore":
+            return "Bedsore Clinical Practice";
+          case "bedsoreDescription":
+            return "Pre-clinical practice conducted in the metaverse from bedsore management to treatment.";
+          case "diabetes":
+            return "Diabetes Clinical Practice";
+          case "diabetesDescription":
+            return "Pre-clinical practice conducted in the metaverse from diabetes management to treatment.";
+            case "simpleUrinaryTractInfection":
+              return "SimpleUrinaryTract\nInfection";
+            case "simpleUrinaryTractInfectionDescription":
+              return "Pre-clinical Practice in the Metaverse for Simple Urinary Tract Infection";
+              case "urinaryIncontinence":
+                return "Urinary\nIncontinence";
+              case "urinaryIncontinenceDescription":
+                return "Urinary Incontinence, Pre-clinical practice conducted in the metaverse.";
+                case "intramuscularInjectionClinicalPractice":
+                  return "Intramuscular Injection\nClinical Practice";
+                  case "intramuscularInjectionClinicalPracticeDescription":
+                    return "Pre-clinical Practice of Intramuscular Injections in the Metaverse";
+            case "learn":
+              return "learn";
+          // 다른 항목들에 대한 번역도 추가합니다.
+          default:
+            return "";
+        }
+      default:
+        return "";
+    }
+  };
+
   const contentData = [
     {
-      title: "욕창 임상실습",
-      description: "욕창 관리부터 치료까지 메타버스로\n 진행하는 예비 임상실습",
-      buttonText: "학습하기",
+      title: translateText("bedsore"),
+      description: translateText("bedsoreDescription"),
+      buttonText: translateText("learn"),
       imageUrl: `${process.env.PUBLIC_URL}/img/bedsore.png`,
     },
     {
-      title: "당뇨 임상실습",
-      description: "당뇨 관리부터 치료까지 메타버스로\n 진행하는 예비 임상실습",
-      buttonText: "학습하기",
+      title: translateText("diabetes"),
+      description: translateText("diabetesDescription"),
+      buttonText: translateText("learn"),
       imageUrl: `${process.env.PUBLIC_URL}/img/diabetes.png`,
     },
     {
-      title: "단순도뇨 임상실습",
-      description: "단순도뇨, 메타버스로\n 진행하는 예비 임상실습",
-      buttonText: "학습하기",
+      title: translateText("simpleUrinaryTractInfection"),
+      description: translateText("simpleUrinaryTractInfectionDescription"),
+      buttonText: translateText("learn"),
       imageUrl: `${process.env.PUBLIC_URL}/img/nelaton.png`,
     },
     {
-      title: "유치도뇨 임상실습",
-      description: "유치도뇨, 메타버스로\n 진행하는 예비 임상실습",
-      buttonText: "학습하기",
+      title: translateText("urinaryIncontinence"),
+      description: translateText("urinaryIncontinenceDescription"),
+      buttonText: translateText("learn"),
       imageUrl: `${process.env.PUBLIC_URL}/img/foley.png`,
     },
     {
-      title: "근육주사 임상실습",
-      description: "근육주사, 메타버스로\n 진행하는 예비 임상실습",
-      buttonText: "학습하기",
+      title: translateText("intramuscularInjectionClinicalPractice"),
+      description: translateText("intramuscularInjectionClinicalPracticeDescription"),
+      buttonText: translateText("learn"),
       imageUrl: `${process.env.PUBLIC_URL}/img/intramuscular.png`,
     },
-    // 추가적인 Content Card 데이터를 필요한 만큼 추가
+    // 나머지 항목도 동일하게 번역합니다.
   ];
+
+  const handleLanguageChange = (newLanguage) => {
+    changeLanguage(newLanguage); // 언어 변경 함수 호출
+  };
+
 
   return (
     <>
-      <div className="contentSlideContainer">
+      <div className="contentSlideContainer" onLanguageChange={handleLanguageChange}>
         <div className="contentSlideWrapper">
           <div className="contentText">
-            <span>실습 콘텐츠 현황</span>
-            <span>자세히보기 →</span>
+            <span>{" "}
+              {selectedLanguage === "ko" ? "실습 콘텐츠 현황" : "Status of Practical Training Content"}</span>
+            <span>{" "}
+              {selectedLanguage === "ko" ? "자세히보기 →" : "View Details →"}</span>
           </div>
           <div className="contentCardWrapper">
             {contentData.map((content, index) => (

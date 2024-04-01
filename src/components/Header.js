@@ -7,14 +7,26 @@ import Cookies from "universal-cookie";
 import { loginSuccess } from "../actions";
 import { getUserDataFromCookie } from "./cookies";
 import ReadyModal from "./ReadyModal";
+import { useLanguage } from "../LanguageContext";
 
-const Header = () => {
+const Header = ({ onLanguageChange }) => {
   const isAuthenticated = useSelector((state) => state.isAuthenticated);
   const user = useSelector((state) => state.user);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const cookies = new Cookies();
   const [isReadyModalOpen, setIsReadyModalOpen] = useState(false);
+  const { selectedLanguage } = useLanguage(); // LanguageContext에서 언어 상태를 가져옴
+  const [isLanguageMenuOpen, setIsLanguageMenuOpen] = useState(false);
+
+  const toggleLanguageMenu = () => {
+    setIsLanguageMenuOpen(!isLanguageMenuOpen);
+  };
+
+  const handleLanguageChange = (newLanguage) => {
+    onLanguageChange(newLanguage); // 부모 컴포넌트로 언어 변경 알림
+    setIsLanguageMenuOpen(false); // 언어 변경 후 언어 메뉴 닫기
+  };
 
   const openReadyModal = () => {
     setIsReadyModalOpen(true);
@@ -148,6 +160,30 @@ const Header = () => {
   return (
     <>
       <div className="headerContainer">
+        <div className="languageWrapper">
+          <span onClick={toggleLanguageMenu}>Language</span>
+          {isLanguageMenuOpen && (
+            <div className="languageMenu">
+              <div
+                onClick={() => handleLanguageChange("ko")}
+                className="koreanWrapper"
+              >
+                <img
+                  src={`${process.env.PUBLIC_URL}/img/korea.png`}
+                  alt="img"
+                />
+              </div>
+              <div>
+                <div onClick={() => handleLanguageChange("en")}>
+                  <img
+                    src={`${process.env.PUBLIC_URL}/img/usa.png`}
+                    alt="img"
+                  />
+                </div>
+              </div>
+            </div>
+          )}
+        </div>
         <div className="headerWrapper">
           <div className="headerLogo">
             <img
@@ -159,21 +195,36 @@ const Header = () => {
           </div>
           <div className="headerMenu">
             <div className="headerIR headerLine">
-              <span onClick={goToAbout}>Nursense 소개</span>
+              <span onClick={goToAbout}>
+                {" "}
+                {selectedLanguage === "ko" ? "Nursense 소개" : "About"}
+              </span>
             </div>
             <div className="headerCurr headerLine">
-              <span onClick={goToCurr}>사전학습</span>
+              <span onClick={goToCurr}>
+                {" "}
+                {selectedLanguage === "ko" ? "사전학습" : "Pre-learning"}
+              </span>
             </div>
             {isAuthenticated && (
               <div className="headerDownLoad headerLine">
-                <span onClick={goToDw}>다운로드</span>
+                <span onClick={goToDw}>
+                  {" "}
+                  {selectedLanguage === "ko" ? "다운로드" : "Download"}
+                </span>
               </div>
             )}
             <div className="headerContact">
-              <span onClick={goToAi}>널스 멘토</span>
+              <span onClick={goToAi}>
+                {" "}
+                {selectedLanguage === "ko" ? "널스 멘토" : "Nurse Mento"}
+              </span>
             </div>
             <div className="headerContact">
-              <span onClick={goToCustomer}>고객센터</span>
+              <span onClick={goToCustomer}>
+                {" "}
+                {selectedLanguage === "ko" ? "고객센터" : "Contact"}
+              </span>
             </div>
           </div>
           <div className="mainLoginWrapper">
@@ -181,18 +232,21 @@ const Header = () => {
               <>
                 <div className="loggedHeaderWrapper">
                   <span className="headerUserName">{`${user.name}`}</span>
-                  <span> 님 </span>
+                  <span> {selectedLanguage === "ko" ? "님" : "'s"} </span>
                   <span className="headerMyPageText" onClick={goToMyPage}>
-                    마이페이지
+                    {" "}
+                    {selectedLanguage === "ko" ? "마이페이지" : "Mypage"}
                   </span>
                   <span className="headerLogOutText" onClick={handleLogout}>
-                    로그아웃
+                    {" "}
+                    {selectedLanguage === "ko" ? "로그아웃" : "Logout"}
                   </span>
                 </div>
               </>
             ) : (
               <span className="loginText" onClick={goToLogin}>
-                로그인
+                {" "}
+                {selectedLanguage === "ko" ? "로그인" : "Login"}
               </span>
             )}
           </div>

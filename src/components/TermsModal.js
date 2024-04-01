@@ -1,8 +1,14 @@
 // TermsModal.js
 import React from "react";
 import "./TermsModal.css";
+import { useLanguage } from "../LanguageContext";
 
 const TermsModal = ({ closeTermsModal, message, message2 }) => {
+  const { selectedLanguage, changeLanguage } = useLanguage();
+  
+  const handleLanguageChange = (newLanguage) => {
+    changeLanguage(newLanguage); // 언어 변경 함수 호출
+  };
   return (
     <div className="modal">
       <div className="modal-content">
@@ -18,7 +24,8 @@ const TermsModal = ({ closeTermsModal, message, message2 }) => {
             <span>{message}</span>
             <p>{message2}</p>
             <button className="closeModalButton" onClick={closeTermsModal}>
-              확인
+            {" "}
+              {selectedLanguage === "ko" ? "확인" : "Confirm"}
             </button>
           </div>
         </div>

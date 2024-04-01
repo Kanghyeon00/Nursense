@@ -54,10 +54,12 @@
 
 .currLearnTitle {
     margin-bottom: 3%;
+    width: 100%;
 }
 
 .currLearnTitle span {
     color: #078675;
+    width: 100%;
 }
 
 .currLearnTitle span:nth-child(1) {
@@ -121,5 +123,5 @@
   }
 
   .currLearnInfo1 p {
-    line-height: 35px;
+    line-height: 25px;
   }

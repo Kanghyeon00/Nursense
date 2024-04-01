@@ -7,12 +7,18 @@ import { useNavigate } from "react-router-dom";
 import SuccessModal from "../components/SuccessModal";
 import LoginFooter from "../components/LoginFooter";
 import Policy from "../components/Policy";
+import { useLanguage } from "../LanguageContext";
 
 const Register = () => {
   const navigate = useNavigate();
   const [isPolicyModalOpen, setIsPolicyModalOpen] = useState(false);
   const goToHome = () => {
     navigate("/");
+  };
+  const { selectedLanguage, changeLanguage } = useLanguage();
+
+  const handleLanguageChange = (newLanguage) => {
+    changeLanguage(newLanguage); // 언어 변경 함수 호출
   };
 
   const [formData, setFormData] = useState({
@@ -78,9 +84,9 @@ const Register = () => {
 
   const handleChange = async (e) => {
     const { name, value } = e.target;
-  
-     // 공통적으로 수행되는 검사 로직
-     if (name === "id") {
+
+    // 공통적으로 수행되는 검사 로직
+    if (name === "id") {
       // 아이디는 영문과 숫자로만 이루어지고, 6글자 이상이어야 함
       const isValidId = /^[A-Za-z0-9]{6,}$/.test(value);
       setIdError(!isValidId);
@@ -170,7 +176,7 @@ const Register = () => {
         setRegistrationMessage("이미 가입된 아이디입니다.");
       }
     }
-  }
+  };
 
   const openPolicyModal = () => {
     setIsPolicyModalOpen(true);
@@ -180,75 +186,101 @@ const Register = () => {
     setIsPolicyModalOpen(false);
   };
 
-
   return (
     <>
       <div className="registerContainer">
-        <Header />
+        <Header onLanguageChange={handleLanguageChange} />
         <div className="registerWrapper">
           <div className="registrationForm">
             <img
               className="registerLogo"
               src={`${process.env.PUBLIC_URL}/img/registerLogo.png`}
             />
-            <p>Nursense에 회원가입하여 더 많은 서비스를 경험하세요</p>
+            <p>
+              {" "}
+              {selectedLanguage === "ko"
+                ? "Nursense에 로그인하여 더 많은 서비스를 경험하세요."
+                : "Log in to Nursense to experience more services."}
+            </p>
             <form onSubmit={handleSubmit}>
               <label>
-                <p>아이디</p>
+                <p> {selectedLanguage === "ko" ? "아이디" : "ID"}</p>
                 <input
                   type="text"
                   name="id"
                   value={formData.id}
                   onChange={handleChange}
-                  placeholder="아이디 입력"
+                  placeholder={
+                    selectedLanguage === "ko" ? "아이디 입력" : "Enter your ID"
+                  }
                   style={{
                     borderColor: idError || idDuplicateError ? "#E94439" : "",
                   }}
                 />
                 {idError && (
                   <p className="formError">
-                    아이디는 ‘영문’ 또는 ‘숫자’가 포함된 최소 6글자 이상으로
-                    만들어야 합니다.
+                    {" "}
+                    {selectedLanguage === "ko"
+                      ? "아이디는 ‘영문’ 또는 ‘숫자’가 포함된 최소 6글자 이상으로 만들어야 합니다."
+                      : "The username must contain at least 6 characters with 'alphabetical' or 'numeric' characters included."}
                   </p>
                 )}
                 {idDuplicateError && (
-                  <p className="formError">이미 사용 중인 아이디입니다.</p>
+                  <p className="formError">
+                    {" "}
+                    {selectedLanguage === "ko"
+                      ? "이미 사용중인 아이디 입니다"
+                      : "The ID is already in use."}
+                  </p>
                 )}
               </label>
               <label>
-                <p>이름</p>
+                <p> {selectedLanguage === "ko" ? "이름" : "Name"}</p>
                 <input
                   type="text"
                   name="name"
                   value={formData.name}
                   onChange={handleChange}
-                  placeholder="이름 입력"
+                  placeholder={
+                    selectedLanguage === "ko" ? "이름 입력" : "Enter your name"
+                  }
                 />
               </label>
               <label>
-                <p>학번</p>
+                <p> {selectedLanguage === "ko" ? "학번" : "Student ID"}</p>
                 <input
                   type="text"
                   name="student_id"
                   value={formData.student_id}
                   onChange={handleChange}
-                  placeholder="학번 입력"
+                  placeholder={
+                    selectedLanguage === "ko"
+                      ? "학번 입력"
+                      : "Enter your student ID"
+                  }
                   style={{ borderColor: studentIdError ? "#E94439" : "" }}
                 />
                 {studentIdError && (
                   <p className="formError">
-                    학번은 숫자로만 입력되어야 합니다.
+                    {" "}
+                    {selectedLanguage === "ko"
+                      ? "학번은 숫자로만 입력되어야 합니다."
+                      : "The student ID should only consist of numbers."}
                   </p>
                 )}
               </label>
               <label>
-                <p>비밀번호</p>
+                <p> {selectedLanguage === "ko" ? "비밀번호" : "Password"}</p>
                 <input
                   type="password"
                   name="password"
                   value={formData.password}
                   onChange={handleChange}
-                  placeholder="비밀번호 입력"
+                  placeholder={
+                    selectedLanguage === "ko"
+                      ? "비밀번호 입력"
+                      : "Enter your password"
+                  }
                   style={{ borderColor: passwordMatchError ? "#E94439" : "" }}
                 />
               </label>
@@ -258,54 +290,84 @@ const Register = () => {
                   name="passwordCheck"
                   value={formData.passwordCheck}
                   onChange={handleChange}
-                  placeholder="비밀번호 재입력"
+                  placeholder={
+                    selectedLanguage === "ko"
+                      ? "비밀번호 재입력"
+                      : "Enter your password again"
+                  }
                   style={{ borderColor: passwordMatchError ? "#E94439" : "" }}
                 />
                 {passwordMatchError && (
-                  <p className="formError">비밀번호가 일치하지 않습니다.</p>
+                  <p className="formError">
+                    {" "}
+                    {selectedLanguage === "ko"
+                      ? "비밀번호가 일치하지 않습니다."
+                      : "The passwords do not match."}
+                  </p>
                 )}
               </label>
               <label>
-                <p>이메일</p>
+                <p> {selectedLanguage === "ko" ? "이메일" : "E-mail"}</p>
                 <input
                   type="email"
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
-                  placeholder="이메일 입력"
+                  placeholder={
+                    selectedLanguage === "ko"
+                      ? "이메일 입력"
+                      : "Enter your E-mail"
+                  }
                 />
               </label>
               <label>
-                <p>학교</p>
+                <p> {selectedLanguage === "ko" ? "학교" : "School"}</p>
                 <input
                   type="text"
                   name="school"
                   value={formData.school}
                   onChange={handleChange}
-                  placeholder="학교명 입력"
+                  placeholder={
+                    selectedLanguage === "ko"
+                      ? "학교명 입력"
+                      : "Enter your school name"
+                  }
                   style={{ borderColor: schoolError ? "#E94439" : "" }}
                 />
                 {schoolError && (
                   <p className="formError">
-                    잘못된 학교 명 입니다. ‘OO대학교’ 와 같이 전체 학교 명을
-                    작성해야 합니다.{" "}
+                    {" "}
+                    {selectedLanguage === "ko"
+                      ? "잘못된 학교 명 입니다. ‘OO대학교’ 와 같이 전체 학교 명을 작성해야 합니다."
+                      : "The school name entered is incorrect. Please enter the full school name such as 'OO University."}
                   </p>
                 )}
               </label>
               <label>
-                <p>학과(학부)</p>
+                <p>
+                  {" "}
+                  {selectedLanguage === "ko"
+                    ? "학과(학부)"
+                    : "Department (Undergraduate)"}
+                </p>
                 <input
                   type="text"
                   name="department"
                   value={formData.department}
                   onChange={handleChange}
-                  placeholder="학과(학부)입력"
+                  placeholder={
+                    selectedLanguage === "ko"
+                      ? "학과(학부) 입력"
+                      : "Enter your Department (Undergraduate)"
+                  }
                   style={{ borderColor: departmentError ? "#E94439" : "" }}
                 />
                 {departmentError && (
                   <p className="formError">
-                    잘못된 학과(학부) 명 입니다. ‘OO학과(또는 학부)’ 와 같이
-                    전체 학과(학부) 명을 작성해야 합니다.{" "}
+                    {" "}
+                    {selectedLanguage === "ko"
+                      ? "잘못된 학과(학부) 명 입니다. ‘OO학과(또는 학부)’ 와 같이 전체 학과(학부) 명을 작성해야 합니다."
+                      : "The department name entered is incorrect. Please enter the full department name such as 'Department of OO (or Undergraduate Program).'"}
                   </p>
                 )}
               </label>
@@ -319,23 +381,90 @@ const Register = () => {
                   />
                 </div>
                 <div className="termsTextWrapper">
-                  <span onClick={openPolicyModal}>서비스 이용약관</span>
-                  <span> 및 </span>
-                  <span onClick={openPolicyModal}>개인정보 취급방침</span>
-                  <span>을 </span>
-                  <span>확인</span>
-                  <span>하였고, 이에</span>
-                  <span>동의합니다</span>
+                  <span
+                    onClick={selectedLanguage === "ko" ? openPolicyModal : "" }
+                    style={{
+                      color: selectedLanguage === "ko" ? "#078675" : "#000",
+                      borderBottom: "none",
+                      fontWeight: selectedLanguage === "ko" ? "bold" : "",
+                      cursor: selectedLanguage === "ko" ? "pointer" : "",
+                    }}
+                  >
+                    {" "}
+                    {selectedLanguage === "ko"
+                      ? "서비스 이용약관"
+                      : "I have reviewed and agree"}
+                  </span>
+                  <span> {selectedLanguage === "ko" ? " 및 " : "to the"} </span>
+                  <span
+                    onClick={selectedLanguage === "ko" ? openPolicyModal : openPolicyModal}
+                    style={{
+                      color: selectedLanguage === "ko" ? "#078675" : "#078675",
+                      borderBottom: "none",
+                      fontWeight: selectedLanguage === "ko" ? "bold" : "bold",
+                      cursor: selectedLanguage === "ko" ? "pointer" : "pointer",
+                    }}
+                  >
+                    {" "}
+                    {selectedLanguage === "ko"
+                      ? "개인정보 취급방침"
+                      : " terms of service and "}
+                  </span>
+                  <span
+                    onClick={selectedLanguage === "ko" ? "" : openPolicyModal}
+                    style={{
+                      color: selectedLanguage === "ko" ? "#000" : "#078675",
+                      borderBottom: "none",
+                      fontWeight: selectedLanguage === "ko" ? "" : "bold",
+                      cursor: selectedLanguage === "ko" ? "" : "pointer",
+                    }}
+                  >
+                    {" "}
+                    {selectedLanguage === "ko" ? "을 " : "privacy policy"}{" "}
+                  </span>
+                  <span
+                    style={{
+                      color: selectedLanguage === "ko" ? "#078675" : "#000",
+                      fontWeight: selectedLanguage === "ko" ? "bold" : "",
+                    }}
+                  >
+                    {" "}
+                    {selectedLanguage === "ko"
+                      ? "확인"
+                      : "regarding the handling of"}
+                  </span>
+                  <span>
+                    {" "}
+                    {selectedLanguage === "ko" ? "하였고, 이에" : "personal"}
+                  </span>
+                  <span
+                    style={{
+                      color: selectedLanguage === "ko" ? "#078675" : "#000",
+                      fontWeight: selectedLanguage === "ko" ? "bold" : "",
+                    }}
+                  >
+                    {" "}
+                    {selectedLanguage === "ko" ? "동의합니다" : "information."}
+                  </span>
                 </div>
               </div>
               <button className="regiSubmitButton" type="submit">
-                가입하기
+                {" "}
+                {selectedLanguage === "ko" ? "가입하기" : "Confirm"}
               </button>
             </form>
             {showTermsModal && (
               <TermsModal
-                message={"서비스 이용약관 및 개인정보 취급방침을"}
-                message2={"확인 후, 동의해주세요."}
+                message={
+                  selectedLanguage === "ko"
+                    ? "서비스 이용약관 및 개인정보 취급방침을"
+                    : "Please review and agree to the"
+                }
+                message2={
+                  selectedLanguage === "ko"
+                    ? "확인 후, 동의해주세요."
+                    : "Terms of Service and Privacy Policy."
+                }
                 closeTermsModal={closeTermsModal}
               />
             )}

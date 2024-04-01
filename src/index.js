@@ -6,13 +6,16 @@ import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
 import { Provider } from 'react-redux';
 import store from './store';
+import { LanguageProvider } from "./LanguageContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
     <Provider store={store}>
+    <LanguageProvider>
       <App />
+      </LanguageProvider>
       </Provider>
     </BrowserRouter>
   </React.StrictMode>

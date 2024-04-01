@@ -8,6 +8,7 @@ import ContentSlide from "../components/ContentSlide";
 import Footer from "../components/Footer";
 import Cookies from "universal-cookie";
 import ChangePw from "../components/ChangePw";
+import { useLanguage } from "../LanguageContext";
 
 const MyPage = () => {
   const [userData, setUserData] = useState(null);
@@ -19,6 +20,11 @@ const MyPage = () => {
   const userId = cookies.get("id");
   const token = cookies.get("token");
   const refreshToken = cookies.get("refreshToken");
+  const { selectedLanguage, changeLanguage } = useLanguage();
+  
+  const handleLanguageChange = (newLanguage) => {
+    changeLanguage(newLanguage); // 언어 변경 함수 호출
+  };
 
   const handleInfoUpdateClick = () => {
     setModalVisible(true);
@@ -67,32 +73,40 @@ const MyPage = () => {
     <>
       <div className="myPageContainer">
         <div className="myPageWrapper">
-          <Header />
+          <Header onLanguageChange={handleLanguageChange} />
           <div className="myPageInfoWrapper">
             <div className="myPageInfo">
-              <p>Nursense 마이페이지</p>
+              <p>{" "}
+              {selectedLanguage === "ko" ? "Nursense 마이페이지" : "Nursense MyPage"}</p>
               <div className="myPageName">
                 <span>{userData?.name || "Guest"}</span>
                 {/* userData가 null이거나 undefined인 경우에는 "Guest"를 보여줌 */}
-                <span> 님 </span>
-                <span>반갑습니다.</span>
+                <span>{" "}
+              {selectedLanguage === "ko" ? " 님 " : ""}</span>
+                <span>{" "}
+              {selectedLanguage === "ko" ? " 반갑습니다 " : "Welcome."}</span>
               </div>
               <div className="myPageSchool">
                 <p>
-                  학교정보 : <span>{userData?.school || "학교 정보 없음"}</span>
+                {" "}
+              {selectedLanguage === "ko" ? "학교정보" : "School Information"} : <span>{userData?.school || "학교 정보 없음"}</span>
                 </p>
                 <p>
-                  학과정보 : <span>{userData?.department || "학과 정보 없음"}</span>
+                {" "}
+              {selectedLanguage === "ko" ? "학과정보" : "Department Information"} : <span>{userData?.department || "학과 정보 없음"}</span>
                 </p>
                 <p>
-                  학번정보 : <span>{userData?.student_id || "학번 정보 없음"}</span>
+                {" "}
+              {selectedLanguage === "ko" ? "학번정보" : "Student ID Information"} : <span>{userData?.student_id || "학번 정보 없음"}</span>
                 </p>
               </div>
             </div>
             <div className="myPageButtonWrapper">
-              <button onClick={handleInfoUpdateClick}>나의 정보 수정</button>
+              <button onClick={handleInfoUpdateClick}>{" "}
+              {selectedLanguage === "ko" ? "나의 정보 수정" : "Update Information"}</button>
             </div>
-            <button className="changePwButton" onClick={handleChangePwClick}>비밀번호 변경</button>
+            <button className="changePwButton" onClick={handleChangePwClick}>{" "}
+              {selectedLanguage === "ko" ? "비밀번호 변경" : "Change password"}</button>
           </div>
           <TabMenu />
           <ContentSlide />

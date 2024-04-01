@@ -3,12 +3,19 @@ import './FindId.css';
 import axios from 'axios';
 import TermsModal from './TermsModal';
 import CheckModal from './CheckModal';
+import { useLanguage } from "../LanguageContext";
 
 const FindId = ({ closeModal }) => {
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
   const [showCheckModal, setShowCheckModal] = useState(false);
   const [showTermsModal, setShowTermsModal] = useState(false);
+
+  const { selectedLanguage, changeLanguage } = useLanguage();
+  
+  const handleLanguageChange = (newLanguage) => {
+    changeLanguage(newLanguage); // 언어 변경 함수 호출
+  };
 
   const handleFindId = async () => {
     try {
@@ -41,7 +48,8 @@ const FindId = ({ closeModal }) => {
       return (
         <TermsModal
           closeTermsModal={() => setShowTermsModal(false)}
-          message={"일치하는 정보가 없습니다"}
+          message={
+            selectedLanguage === "ko" ? "일치하는 정보가 없습니다" : "Sorry, no matching information found :("}
         />
       );
     }
@@ -53,7 +61,8 @@ const FindId = ({ closeModal }) => {
       <div className="findIdContainer">
         <div className="findIdWrapper">
           <div className="findIdTitle">
-            <span>아이디 찾기</span>
+            <span>{" "}
+              {selectedLanguage === "ko" ? "아이디 찾기" : "Find ID"}</span>
             <img
               src={`${process.env.PUBLIC_URL}/img/closeButton.png`}
               alt="모달 닫기"
@@ -61,16 +70,19 @@ const FindId = ({ closeModal }) => {
             />
           </div>
           <div className="findIdMain">
-            <p>회원가입 당시 사용한 이메일 주소를 입력해 주세요.</p>
+            <p>{" "}
+              {selectedLanguage === "ko" ? "회원가입 당시 사용한 이메일 주소를 입력해 주세요." : "Please enter the email address you used when signing up."}</p>
             <input
               type="email"
-              placeholder="이메일 입력"
+              placeholder={
+                selectedLanguage === "ko" ? "이메일 입력" : "Enter your E-mail"}
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
           </div>
           <div className="findIdButton">
-            <button onClick={handleFindId}>확인</button>
+            <button onClick={handleFindId}>{" "}
+              {selectedLanguage === "ko" ? "확인" : "Confirm"}</button>
           </div>
         </div>
       </div>

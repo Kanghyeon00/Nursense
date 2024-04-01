@@ -8,6 +8,7 @@ import { loginSuccess } from '../actions';
 import FindId from "../components/FindId";
 import FindPw from "../components/FindPw";
 import LoginFooter from "../components/LoginFooter";
+import { useLanguage } from "../LanguageContext";
 
 const Login = () => {
 
@@ -100,9 +101,15 @@ const handleLogin = async (e) => {
     setShowPassword(!showPassword); // 상태 업데이트 추가
   };
 
+  const { selectedLanguage, changeLanguage } = useLanguage();
+  
+  const handleLanguageChange = (newLanguage) => {
+    changeLanguage(newLanguage); // 언어 변경 함수 호출
+  };
+
   return (
     <div className="loginContainer">
-      <Header />
+      <Header onLanguageChange={handleLanguageChange} />
       <div className="loginWrapper">
         <div className="loginLogoWrapper">
           <img
@@ -111,7 +118,8 @@ const handleLogin = async (e) => {
             alt="logo"
           />
         </div>
-        <p>Nursense에 로그인하여 더 많은 서비스를 경험하세요.</p>
+        <p>{" "}
+              {selectedLanguage === "ko" ? "Nursense에 로그인하여 더 많은 서비스를 경험하세요." : "Log in to Nursense to experience more services."}</p>
         <form onSubmit={handleLogin}>
           <label>
             <input
@@ -119,7 +127,8 @@ const handleLogin = async (e) => {
               name="id"
               value={loginData.id}
               onChange={handleChange}
-              placeholder="아이디 입력"
+              placeholder={
+                selectedLanguage === "ko" ? "아이디 입력" : "Enter your ID"}
             />
           </label>
           <br />
@@ -131,7 +140,9 @@ const handleLogin = async (e) => {
                 name="password"
                 value={loginData.password}
                 onChange={handleChange}
-                placeholder="비밀번호 입력"
+                placeholder={
+                  selectedLanguage === "ko" ? "비밀번호 입력" : "Enter your password"
+                }
               />
               <img
                 src={`${process.env.PUBLIC_URL}/img/${
@@ -144,12 +155,16 @@ const handleLogin = async (e) => {
             </div>
           </label>
           <br />
-          <button type="submit">로그인</button>
+          <button type="submit">{" "}
+              {selectedLanguage === "ko" ? "로그인" : "Login"}</button>
         </form>
         <div className="loginSearchWrapper">
-          <span onClick={openFindIdModal}>아이디 찾기</span>
-          <span onClick={openFindPwModal}>비밀번호 찾기</span>
-          <span onClick={goToRegister}>회원가입</span>
+          <span onClick={openFindIdModal}>{" "}
+              {selectedLanguage === "ko" ? "아이디 찾기" : "Find ID"}</span>
+          <span onClick={openFindPwModal}>{" "}
+              {selectedLanguage === "ko" ? "비밀번호 찾기" : "Find Password"}</span>
+          <span onClick={goToRegister}>{" "}
+              {selectedLanguage === "ko" ? "회원가입" : "Register"}</span>
         </div>
       </div>
       {isFindIdModalOpen && <FindId closeModal={closeFindIdModal} />}

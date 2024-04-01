@@ -3,6 +3,7 @@ import emailjs from "emailjs-com";
 import "./Customer.css";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import { useLanguage } from "../LanguageContext";
 
 const Customer = () => {
   const [formData, setFormData] = useState({
@@ -58,9 +59,16 @@ const Customer = () => {
       });
   };
 
+  const { selectedLanguage, changeLanguage } = useLanguage();
+
+  const handleLanguageChange = (newLanguage) => {
+    changeLanguage(newLanguage); // 언어 변경 함수 호출
+  };
+
+
   return (
     <>
-      <Header />
+      <Header onLanguageChange={handleLanguageChange} />
       <div className="customerContainer">
         <div className="customerWrapper">
           <div className="contactLogoWrapper">
@@ -69,23 +77,28 @@ const Customer = () => {
           <div className="contactWrapper">
             <form onSubmit={handleSubmit}>
               <label>
-                회사명
+              {" "}
+              {selectedLanguage === "ko" ? "회사명" : "Company name"}
                 <input type="text" name="companyName" value={formData.companyName} onChange={handleChange} />
               </label>
               <label>
-                성함
+              {" "}
+              {selectedLanguage === "ko" ? "성함" : "Name"}
                 <input type="text" name="name" value={formData.name} onChange={handleChange} />
               </label>
               <label>
-                연락처
+              {" "}
+              {selectedLanguage === "ko" ? "연락처" : "Phone number"}
                 <input type="text" name="phone" value={formData.phone} onChange={handleChange} />
               </label>
               <label>
-                이메일
+              {" "}
+              {selectedLanguage === "ko" ? "이메일" : "E-mail"}
                 <input type="email" name="email" value={formData.email} onChange={handleChange} />
               </label>
               <label>
-                문의내용
+              {" "}
+              {selectedLanguage === "ko" ? "문의내용" : "Inquiry content"}
                 <textarea
                   name="message"
                   value={formData.message}
@@ -93,7 +106,8 @@ const Customer = () => {
                 />
               </label>
               <button type="submit" className="contactSubmit">
-                전송하기
+              {" "}
+              {selectedLanguage === "ko" ? "전송하기" : "Send"}
               </button>
             </form>
           </div>

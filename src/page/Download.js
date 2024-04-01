@@ -2,14 +2,16 @@ import React, { useState, useEffect } from "react";
 import "./Download.css";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import { useLanguage } from "../LanguageContext";
 
 const Download = () => {
   const [downloadText, setDownloadText] = useState("");
   const [isVisible, setIsVisible] = useState(true);
-  const downloadMessages = [
-    "런처를 다운로드 하고 있습니다. 잠시만 기다려주세요.",
-    "런처 다운로드가 완료되었다면 실행시켜 주세요."
-  ];
+  const { selectedLanguage, changeLanguage } = useLanguage();
+
+  const handleLanguageChange = (newLanguage) => {
+    changeLanguage(newLanguage); // 언어 변경 함수 호출
+  };
 
   useEffect(() => {
     let currentIndex = 0;
@@ -33,12 +35,18 @@ const Download = () => {
 
     // 컴포넌트가 언마운트되면 interval 해제
     return () => clearInterval(intervalId);
-  }, []);
+  }, [selectedLanguage]); // selectedLanguage가 변경될 때마다 useEffect 실행
+
+  // 선택된 언어에 따라 다운로드 메시지를 설정
+  const downloadMessages =
+    selectedLanguage === "ko"
+      ? ["런처를 다운로드 하고 있습니다. 잠시만 기다려주세요.", "런처 다운로드가 완료되었다면 실행시켜 주세요."]
+      : ["Downloading the launcher. Please wait a moment.", "Once the launcher download is complete, please run it."];
 
   return (
     <>
       <div className="downloadContainer">
-        <Header />
+        <Header onLanguageChange={handleLanguageChange} />
         <div className="downloadWrapper">
           <div className="downloadText">
             <div className="loaderWrapper">

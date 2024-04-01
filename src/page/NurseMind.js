@@ -2,12 +2,18 @@ import React, { useState, useEffect, useRef } from "react";
 import "./NurseMind.css";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import { useLanguage } from "../LanguageContext";
 
 const NurseMind = () => {
   const [messages, setMessages] = useState([]);
   const [userInput, setUserInput] = useState("");
   const [isTyping, setIsTyping] = useState(false);
   const messageWrapperRef = useRef(null);
+  const { selectedLanguage, changeLanguage } = useLanguage();
+
+  const handleLanguageChange = (newLanguage) => {
+    changeLanguage(newLanguage); // 언어 변경 함수 호출
+  };
 
   useEffect(() => {
     if (messageWrapperRef.current) {
@@ -61,7 +67,7 @@ const NurseMind = () => {
 
   return (
     <div className="aiContainer">
-      <Header />
+      <Header onLanguageChange={handleLanguageChange} />
       <div className="aiWrapper">
         <div className="nurseMentoTitle">
           <span>NurseMento</span>
@@ -97,7 +103,9 @@ const NurseMind = () => {
               type="text"
               value={userInput}
               onChange={(e) => setUserInput(e.target.value)}
-              placeholder="널스 멘토에게 질문 해보세요!"
+              placeholder={
+                selectedLanguage === "ko" ? "널스 멘토에게 질문 해보세요!" : "Ask Nurse Mento a question!"
+              }
             />
             <button className="aiSendButton" type="submit">
               Send

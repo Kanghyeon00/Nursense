@@ -1,14 +1,22 @@
 import React from "react";
 import './Policy.css';
+import { useLanguage } from "../LanguageContext";
 
 const Policy = ({onClose}) => {
+  const { selectedLanguage, changeLanguage } = useLanguage();
+  
+  const handleLanguageChange = (newLanguage) => {
+    changeLanguage(newLanguage); // 언어 변경 함수 호출
+  };
+
   return (
     <>
       <div className="policyContainer">
         <div className="policyWrapper">
           <div className="policyModal">
             <div className="policyTitle">
-              <span>이용약관 및 개인정보처리방침</span>
+              <span>{" "}
+              {selectedLanguage === "ko" ? "이용약관 및 개인정보처리방침" : "Terms of Service and Privacy Policy"}</span>
               <img src={`${process.env.PUBLIC_URL}/img/closeButton.png`} onClick={onClose} />
             </div>
             <div className="policyText">

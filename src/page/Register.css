@@ -51,19 +51,6 @@
   border: none;
 }
 
-.termsTextWrapper span:nth-child(1),
-.termsTextWrapper span:nth-child(3) {
-  text-decoration: underline;
-}
-
-.termsTextWrapper span:nth-child(1):hover {
-  cursor: pointer;
-}
-
-.termsTextWrapper span:nth-child(3):hover {
-  cursor: pointer;
-}
-
 .registrationForm .termsBox {
   margin-left: 0;
   cursor: pointer;
@@ -86,10 +73,6 @@
 
 .termsWrapper input[type="checkbox"]:checked {
   background-color: #078675;
-}
-
-.termsWrapper span {
-  font-weight: bold;
 }
 
 .termsWrapper span:nth-child(2),

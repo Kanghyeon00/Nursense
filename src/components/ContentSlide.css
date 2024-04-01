@@ -30,6 +30,10 @@
     transition: 0.25s;
 }
 
+.cardTitle p:nth-child(2) {
+    height: 5vh;
+}
+
 .contentCard:hover button {
     border: none;
     background-color: #fff;
