@@ -97,3 +97,7 @@
 .languageMenu {
     display: flex;
 }
+
+.languageText {
+    margin-top: 2%;
+}
