@@ -6,12 +6,13 @@ import { useLanguage } from "../LanguageContext";
 const Footer = () => {
 
   const { selectedLanguage, changeLanguage } = useLanguage();
-
-  const [isPolicyModalOpen, setIsPolicyModalOpen] = useState(false);
-
+  
   const handleLanguageChange = (newLanguage) => {
     changeLanguage(newLanguage); // 언어 변경 함수 호출
   };
+
+  const [isPolicyModalOpen, setIsPolicyModalOpen] = useState(false);
+
 
   const openDM = () => {
     window.location.href = 'http://www.wmscompany.co.kr'
