@@ -37,6 +37,7 @@
     font-size: 1.1rem;
     font-family: 'Pretendard';
     color: #078675;
+    padding-left: 10px;
 }
 
 .contactWrapper textarea {
@@ -51,10 +52,12 @@
     font-size: 1.1rem;
     font-family: 'Pretendard';
     color: #078675;
+    padding-left: 10px;
+    padding-top: 10px;
 }
 
 .contactSubmit {
-    width: 20vw;
+    width: 21vw;
     height: 5vh;
     margin-top: 10%;
     background: none;
