@@ -148,7 +148,7 @@
 
 .aboutReviewBox1 {
     width: 20%;
-    height: 21vh;
+    height: 100%;
     background-color: #F1F2F5;
     margin: 0 30px;
     border-radius: 20px;
@@ -157,7 +157,7 @@
 
 .aboutReviewBox2 {
     width: 20%;
-    height: 21vh;
+    height: 100%;
     background-color: #F1F2F5;
     margin: 0 30px 0 0;
     border-radius: 20px;
