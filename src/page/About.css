@@ -55,6 +55,7 @@
 
 .aboutRight1Wrapper img {
     margin-top: 28%;
+    animation: fadeIn 1.5s;
 }
 
 .about2Wrapper {
@@ -170,3 +171,13 @@
     line-height: 28px;
     font-weight: 500;
 }
+
+@keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  
