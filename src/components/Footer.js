@@ -85,7 +85,7 @@ const Footer = () => {
               <p>Copyrightⓒ2023 DoubleM All rights reserved.</p>
               <span onClick={openPolicyModal}>{" "}
               {selectedLanguage === "ko" ? "이용약관" : "Terms of Service"}</span>
-              <span onClick={openPolicyModal}>{" "}
+              <span onClick={openPolicyModal}>
               {selectedLanguage === "ko" ? "개인정보처리방침" : "Privacy Policy"}</span>
             </div>
         </div>
