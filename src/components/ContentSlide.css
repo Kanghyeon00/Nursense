@@ -57,14 +57,14 @@
 }
 
 .cardBottom {
-    display: flex;
-    justify-content: space-between;
-    align-items: end;
-    margin-top: 40%;
+    text-align: center;
+    height: 100%;
+    padding: 20px 0;
 }
 
 .cardBottom img {
     width: 70%;
+    margin-bottom: 10%;
 }
 
 .contentCard button {

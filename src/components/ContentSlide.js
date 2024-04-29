@@ -33,23 +33,23 @@ const ContentSlide = () => {
           case "bedsore":
             return "욕창 임상실습";
           case "bedsoreDescription":
-            return "욕창 관리부터 치료까지 메타버스로 진행하는 예비 임상실습";
+            return "욕창 관리부터 치료까지\n메타버스로 진행하는\n예비 임상실습";
           case "diabetes":
             return "당뇨 임상실습";
           case "diabetesDescription":
-            return "당뇨 관리부터 치료까지 메타버스로 진행하는 예비 임상실습";
+            return "당뇨 관리부터 치료까지\n메타버스로 진행하는\n예비 임상실습";
             case "simpleUrinaryTractInfection":
               return "단순도뇨 임상실습";
             case "simpleUrinaryTractInfectionDescription":
-              return "단순도뇨 관리부터 치료까지 메타버스로 진행하는 예비 임상실습";
+              return "단순도뇨 관리부터 치료까지\n메타버스로 진행하는\n예비 임상실습";
               case "urinaryIncontinence":
                 return "유치도뇨 임상실습";
               case "urinaryIncontinenceDescription":
-                return "유치도뇨 관리부터 치료까지 메타버스로 진행하는 예비 임상실습";
+                return "유치도뇨 관리부터 치료까지\n메타버스로 진행하는\n예비 임상실습";
                 case "intramuscularInjectionClinicalPractice":
                   return "근육주사임상실습";
                   case "intramuscularInjectionClinicalPracticeDescription":
-                    return "근육주사, 메타버스로 진행하는 예비 임상실습";
+                    return "근육주사 관리부터 주입까지\n메타버스로 진행하는\n예비 임상실습";
             case "learn":
               return "학습하기";
           // 다른 항목들에 대한 번역도 추가합니다.
@@ -148,8 +148,8 @@ const ContentSlide = () => {
                     <p>{content.description}</p>
                   </div>
                   <div className="cardBottom">
-                    <button onClick={openLuncher}>{content.buttonText}</button>
                     <img src={content.imageUrl} alt={`Content ${index + 1} img`} />
+                    <button onClick={openLuncher}>{content.buttonText}</button>
                   </div>
                 </div>
               </div>
