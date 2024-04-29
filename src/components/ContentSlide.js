@@ -68,7 +68,7 @@ const ContentSlide = () => {
           case "diabetesDescription":
             return "Pre-clinical practice conducted in the metaverse from diabetes management to treatment.";
             case "simpleUrinaryTractInfection":
-              return "SimpleUrinaryTract\nInfection";
+              return "SimpleUrinary\nTractInfection";
             case "simpleUrinaryTractInfectionDescription":
               return "Pre-clinical Practice in the Metaverse for Simple Urinary Tract Infection";
               case "urinaryIncontinence":

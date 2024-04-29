@@ -22,6 +22,12 @@
 .cardTitle p:nth-child(1) {
     font-weight: bold;
     font-size: 1.5rem;
+    height: 8vh;
+}
+
+.cardTitle p:nth-child(2) {
+    width: 100%;
+    height: 7vh;
 }
 
 .contentText span:nth-child(2):hover {
