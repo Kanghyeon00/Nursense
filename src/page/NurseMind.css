@@ -1,13 +1,13 @@
 .aiWrapper {
   width: 30%;
-  height: 75vh;
+  height: 100%;
   margin: auto;
   border: 2px solid #078675;
   margin-top: 3%;
 }
 
 .messageWrapper {
-    overflow: scroll;
+    overflow-y: auto;
     overflow-x: hidden;
     height: 57vh;
 }
@@ -77,24 +77,27 @@
     position: relative;
     border-top: 1px solid #078675;
     margin: auto;
-    padding-top: 3%;
+      padding-top: 3%;
 }
 
 .mentoInputWrapper form {
     position: sticky; /* form을 상대적으로 배치하기 위해 */
     width: 100%; /* 부모 요소에 맞게 너비를 설정 */
     text-align: center; /* 폼을 수평 가운데 정렬하기 위해 */
+    display: flex;
+    align-items: center;
+    margin-bottom: 3%;
 }
 
 .questionInput {
     width: 90%;
     height: 6vh;
-    border-radius: 30px;
     border: 2px solid #078675;
     padding-left: 5%;
     font-size: 1.1rem;
     color: #078675;
     font-family: 'Pretendard';
+
 }
 
 .questionInput:focus {
@@ -109,11 +112,7 @@
 
 .aiSendButton {
     width: 20%;
-    height: 4vh;
-    border-radius: 30px;
-    position: absolute;
-    bottom: 20%;
-    right: 5%;
+    height: 6.6vh;
     border: 2px solid #078675;
     background-color: #078675;
     color: #fff;

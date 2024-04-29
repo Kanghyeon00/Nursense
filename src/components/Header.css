@@ -28,8 +28,8 @@
 }
 
 .headerMenu span {
-    margin-left: 3rem;
-    margin-right: 3rem;
+    margin-left: 40px;
+    margin-right: 40px;
 }
 
 .headerMenu span:hover {
@@ -102,3 +102,16 @@
 .languageWrapper {
     margin-top: 2%;
 }
+
+@media screen and (max-width: 1700px) {
+    .headerMenu {
+        font-size: 1rem;
+    }
+    .mainLoginWrapper {
+        font-size: 1rem;
+    }
+    .headerMenu span {
+        margin-left: 30px;
+        margin-right: 30px;
+    }
+  }
