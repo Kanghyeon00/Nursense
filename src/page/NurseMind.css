@@ -34,12 +34,6 @@
   text-align: center;
 }
 
-.nurseMentoTitle span {
-  color: #078675;
-  font-size: 2rem;
-  font-weight: bold;
-}
-
 .userMessageWrapper,
 .aiMessageWrapper {
     list-style: none;
@@ -129,4 +123,8 @@
 
 .aiSendButton:hover {
     cursor: pointer;
+}
+
+.nurseMentoTitle img {
+  width: 50%;
 }

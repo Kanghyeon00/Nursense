@@ -79,7 +79,6 @@ const Footer = () => {
             <span>{" "}
               {selectedLanguage === "ko" ? "대구광역시 동대구로 465 스케일업허브 DASH 405,406호" : "465, Dongdaegu-ro, Dong-gu, Daegu, Republic of Korea"}</span>
             <span>Tel : 1688-9564</span>
-            <span>010-9436-5543</span>
             </div>
             <div className="footerCopy">
               <p>Copyrightⓒ2023 DoubleM All rights reserved.</p>

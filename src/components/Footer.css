@@ -1,58 +1,61 @@
 .footerWrapper {
-    width: 70vw;
-    margin: auto;
-    padding: 2%;
-    font-size: 0.9rem;
-    font-family: 'Pretendard';
-   
+  width: 70vw;
+  margin: auto;
+  padding: 2%;
+  font-size: 0.9rem;
+  font-family: "Pretendard";
 }
 
 .footerLogoWrapper {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .footerDmLogo {
-    width: 15%;
-    margin-right: 21%;
+  width: 15%;
+  margin-right: 21%;
 }
 
 .footerDmLogo:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .sns {
-    margin-right: 2%;
+  margin-right: 2%;
 }
 
 .sns:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .companyInfo {
-    margin-top: 2%;
+  margin-top: 2%;
 }
 
-.companyInfo span:nth-child(1),.companyInfo  span:nth-child(3),.companyInfo  span:nth-child(4),.companyInfo  span:nth-child(5) {
-    border-right: 2px solid #E6E6E6;
-    padding-right: 1.5%;
+.companyInfo span:nth-child(1),
+.companyInfo span:nth-child(3),
+.companyInfo span:nth-child(4) {
+  border-right: 2px solid #e6e6e6;
+  padding-right: 1.5%;
 }
 
-.companyInfo span:nth-child(2),.companyInfo  span:nth-child(5),.companyInfo  span:nth-child(6) {
-    margin-left: 1.5%;
+.companyInfo span:nth-child(2),
+.companyInfo span:nth-child(5),
+.companyInfo span:nth-child(6) {
+  margin-left: 1.5%;
 }
 
 .footerCopy span:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .footerCopy span:nth-child(2) {
-    padding-right: 1.5%;
-    border-right: 2px solid #E6E6E6;
-    font-weight: bold;
+  padding-right: 1.5%;
+  border-right: 2px solid #e6e6e6;
+  font-weight: bold;
 }
 
 .footerCopy span:nth-child(3) {
-    margin-left: 1.5%;
-    font-weight: bold;
+  margin-left: 1.5%;
+  font-weight: bold;
 }

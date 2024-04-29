@@ -18,9 +18,14 @@
     font-size: 1.1rem;
 }
 
+
 .cardTitle p:nth-child(1) {
     font-weight: bold;
     font-size: 1.5rem;
+}
+
+.contentText span:nth-child(2):hover {
+    cursor: pointer;
 }
 
 .contentCard {

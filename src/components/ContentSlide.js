@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import "./ContentSlide.css";
 import { getUserDataFromCookie } from "./cookies"; // cookies.js 파일에서 필요한 함수 가져오기
 import { useLanguage } from "../LanguageContext";
+import ReadyModal from "./ReadyModal";
 
 const ContentSlide = () => {
   const userData = getUserDataFromCookie(); // 쿠키에서 사용자 데이터 가져오기
@@ -11,6 +12,16 @@ const ContentSlide = () => {
     const launcherURL = `doublemlauncher://nursenselauncher?1?${userData.id}`; // 쿠키에서 가져온 사용자 ID 사용
     console.log({ launcherURL });
     window.location.href = launcherURL;
+  };
+
+  const [isReadyModalOpen, setIsReadyModalOpen] = useState(false);
+
+  const openReadyModal = () => {
+    setIsReadyModalOpen(true);
+  };
+
+  const closeReadyModal = () => {
+    setIsReadyModalOpen(false);
   };
 
   const translateText = (key) => {
@@ -125,7 +136,7 @@ const ContentSlide = () => {
           <div className="contentText">
             <span>{" "}
               {selectedLanguage === "ko" ? "실습 콘텐츠 현황" : "Status of Practical Training Content"}</span>
-            <span>{" "}
+            <span onClick={openReadyModal}>{" "}
               {selectedLanguage === "ko" ? "자세히보기 →" : "View Details →"}</span>
           </div>
           <div className="contentCardWrapper">
@@ -145,6 +156,7 @@ const ContentSlide = () => {
             ))}
           </div>
         </div>
+        {isReadyModalOpen && <ReadyModal onClose={closeReadyModal} />}
       </div>
     </>
   );

@@ -70,7 +70,7 @@ const NurseMind = () => {
       <Header onLanguageChange={handleLanguageChange} />
       <div className="aiWrapper">
         <div className="nurseMentoTitle">
-          <span>NurseMento</span>
+        <img src={`${process.env.PUBLIC_URL}/img/nurseMentoLogo.png`} alt='img'/>
         </div>
         <div className="messageWrapper" ref={messageWrapperRef}>
           <ul>
