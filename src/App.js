@@ -19,6 +19,7 @@ import Download from './page/Download';
 import Introduce from './page/About';
 import About from './page/About';
 import NurseMind from './page/NurseMind';
+import NursenseMedia from './page/NursenseMedia';
 
 
 function App() {
@@ -51,6 +52,7 @@ function App() {
         <Route path="/download" element={<Download />} />
         <Route path="/about" element={<About />} />
         <Route path="/nursemind" element={<NurseMind />} />
+        <Route path="/media" element={<NursenseMedia />} />
         </Routes>
       </div>
     </Provider>

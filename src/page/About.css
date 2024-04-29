@@ -57,6 +57,10 @@
     margin-bottom: 15%;
 }
 
+.aboutVideoWrapper img:hover {
+    cursor: pointer;
+}
+
 .aboutRight1Wrapper img {
     margin-top: 28%;
     animation: fadeIn 3s;

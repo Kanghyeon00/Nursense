@@ -23,6 +23,14 @@ const About = () => {
     );
   };
 
+  const video1Open = () => {
+    window.open("https://www.youtube.com/watch?v=fAUHLtIYtMI", "_blank");
+  }
+
+  const video2Open = () => {
+    window.open("https://www.youtube.com/watch?v=Qmboj45eC9U", "_blank");
+  }
+
   return (
     <>
       <div className="aboutContainer">
@@ -46,14 +54,16 @@ const About = () => {
               <div className="aboutVideoWrapper">
                 <div>
                   <img
-                    src={`${process.env.PUBLIC_URL}/img/videoThumbnail.png`}
+                    src={`${process.env.PUBLIC_URL}/img/videoThumbnail1.png`}
                     alt="img"
+                    onClick={video1Open}
                   />
                 </div>
                 <div>
                   <img
-                    src={`${process.env.PUBLIC_URL}/img/videoThumbnail.png`}
+                    src={`${process.env.PUBLIC_URL}/img/videoThumbnail2.png`}
                     alt="img"
+                    onClick={video2Open}
                   />
                 </div>
               </div>

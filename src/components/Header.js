@@ -70,6 +70,10 @@ const Header = ({ onLanguageChange }) => {
       "https://www.dropbox.com/scl/fi/bst2tebaaac59vcdpzrdc/NursenseLauncher.exe?rlkey=8n0ha01f19jsolxmdi8bmwogu&dl=1";
   };
 
+  const goToMedia = () => {
+    navigate("/media");
+  };
+
   const removeCookies = () => {
     // 쿠키 삭제
     cookies.remove("token");
