@@ -44,3 +44,6 @@
     background-color: #067264;
   }
   
+  .modal {
+    z-index: 5;
+  }

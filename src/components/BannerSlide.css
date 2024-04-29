@@ -20,3 +20,7 @@
   .slideWrapper:hover {
     cursor: pointer;
   }
+
+  .slideContainer {
+    z-index: 1;
+  }

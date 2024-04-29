@@ -14,6 +14,10 @@
     margin-top: 15%;
 }
 
+.aboutNsLogo {
+    animation: slideInFromLeft 1.5s ease-in-out forwards;
+}
+
 .about1Wrapper p {
     font-size: 2.5rem;
     font-weight: 700;
@@ -55,7 +59,7 @@
 
 .aboutRight1Wrapper img {
     margin-top: 28%;
-    animation: fadeIn 1.5s;
+    animation: fadeIn 3s;
 }
 
 .about2Wrapper {
@@ -181,3 +185,13 @@
     }
   }
   
+  @keyframes slideInFromLeft {
+    from {
+      transform: translateX(-100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }

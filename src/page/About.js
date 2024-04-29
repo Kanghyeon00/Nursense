@@ -31,6 +31,7 @@ const About = () => {
           <div className="about1Wrapper">
             <div className="aboutLeft1Wrapper">
               <img
+              className="aboutNsLogo"
                 src={`${process.env.PUBLIC_URL}/img/nsBigLogo.png`}
                 alt="img"
               />

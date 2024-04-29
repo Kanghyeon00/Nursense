@@ -221,6 +221,12 @@ const Header = ({ onLanguageChange }) => {
               </span>
             </div>
             <div className="headerContact">
+              <span onClick={openReadyModal}>
+                {" "}
+                {selectedLanguage === "ko" ? "Nursense 미디어" : "Nursense Media"}
+              </span>
+            </div>
+            <div className="headerContact">
               <span onClick={goToCustomer}>
                 {" "}
                 {selectedLanguage === "ko" ? "고객센터" : "Contact"}
